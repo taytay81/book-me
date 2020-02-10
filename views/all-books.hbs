@@ -8,8 +8,12 @@
 <ul class="list-books">
     {{#each books}}
     <li class="books">
+        <img src="{{this.image}}" alt="cover of book">
         {{this.title}}
+        {{this.author}}
+        {{this.category}}
         {{this.state}}
+        {{this.points}}
     </li>
     {{/each}}
 </ul>

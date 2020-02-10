@@ -12,3 +12,35 @@
     height: 5vh;
     border-radius: 8px;
 }
+
+.form input {
+    padding-left: 1vh;
+    font-size: 2vh;
+}
+
+button i {
+    transition: transform .25s;
+}
+
+button:hover > i{
+    transform:scale(1.2);
+}
+
+button:focus {
+    outline: none;
+}
+
+#btn_search_home {
+    position: relative;
+    padding: 16px;
+	background: transparent;
+	border: none;
+    cursor: pointer;     
+}
+
+#btn_search_home i {
+    font-size: 2vh;
+    position: absolute;
+    right: 4.5vh;
+    top: 0.2vh;
+}
