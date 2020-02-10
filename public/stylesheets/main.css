@@ -1,5 +1,7 @@
 @import './navBar-main.css';
 @import './list-allBooks.css';
+@import './addBook.css';
+@import './homePage.css';
 
 
 * {
