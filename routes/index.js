@@ -7,15 +7,18 @@ router.get("/", (req, res, next) => {
   res.render("index");
 });
 
-router.post("/index/add-books", (req, res, next) => {
+router.post("/addBooks", (req, res, next) => {
   const book = req.body;
   console.log("book", req.body);
   bookModel
     .create(book)
     .then(() => {
-      res.render("index");
+      res.render("addBook");
     })
     .catch(next);
+});
+router.get("/addBooks", (req, res, next) => {
+  res.render("addBook");
 });
 
 module.exports = router;

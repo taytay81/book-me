@@ -30,14 +30,38 @@ const getBooks = async isbn => {
 //function that get the result of the googleapi and prin it inside the form
 function printHtmlBook(data) {
   if (data.totalItems > 0) {
+    const mybook = data.items[0].volumeInfo;
     const isbn = document.getElementById("isbn_id");
     const title = document.getElementById("title_id");
     const img = document.getElementById("img_id");
+    const authors = document.getElementById("author_id");
+    const publishers = document.getElementById("publisher_id");
+    const price = document.getElementById("price_id");
+    const description = document.getElementById("description_id");
+    const category = document.getElementById("category_id");
+    const publishedDate = document.getElementById("published_date_id");
+    const page = document.getElementById("page_count_id");
+    const points = document.getElementById("points_id");
 
-    title.value = data.items[0].volumeInfo.title;
-    isbn.value = data.items[0].volumeInfo.industryIdentifiers[0].identifier;
-    img.src = data.items[0].volumeInfo.imageLinks.thumbnail;
+    title.value = mybook.title;
+    isbn.value = mybook.industryIdentifiers[0].identifier;
+    img.src = extractThumbnail(mybook);
+    //image_value_id.value = mybook.imageLinks.thumbnail;
+
+    if (mybook.authors.length > 1) {
+      const authorsSection = document.getElementById("authors_section");
+      var authorsInnerhtml = `<label for="">Authors</label>`;
+      for (let i = 0; i < mybook.authors.length; i++) {
+        authorsInnerhtml += `<input id="author_id" type="text" value=" ${mybook.authors[i]} " name="author"></input>`;
+      }
+      authorsSection.innerHTML = authorsInnerhtml;
+    } else {
+      authors.value = mybook.authors[0];
+    }
   } else {
+    const message = document.getElementById("messageFromApi");
+    message.innerHTML =
+      "The Isbn has not been found , try with another one or enter manually the data";
     console.log("we could not find the book there is no return element");
   }
 }
