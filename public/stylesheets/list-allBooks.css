@@ -1,0 +1,12 @@
+#container-all-books{
+    margin: 5vh;
+}
+
+
+.list-books {
+    margin: 2vh;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+    grid-column-gap: 20px;
+    grid-row-gap: 20px;
+}

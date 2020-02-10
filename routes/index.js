@@ -8,17 +8,23 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/addBooks", (req, res, next) => {
+  const data = {
+    js: ["addBook"]
+  };
   const book = req.body;
   console.log("book", req.body);
   bookModel
     .create(book)
     .then(() => {
-      res.render("addBook");
+      res.render("addBook", data);
     })
     .catch(next);
 });
 router.get("/addBooks", (req, res, next) => {
-  res.render("addBook");
+  const data = {
+    js: ["addBook"]
+  };
+  res.render("addBook", data);
 });
 
 module.exports = router;

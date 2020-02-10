@@ -1,0 +1,16 @@
+{{>navBar}}
+<div id="container-all-books">
+<h1>All books</h1>
+{{#unless books}}
+<p>No books yet.</p>
+{{/unless}}
+
+<ul class="list-books">
+    {{#each books}}
+    <li class="books">
+        {{this.title}}
+        {{this.state}}
+    </li>
+    {{/each}}
+</ul>
+</div>

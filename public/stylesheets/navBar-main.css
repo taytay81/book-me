@@ -1,0 +1,14 @@
+#nav-main{
+    background-color: red;
+    height: 10vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#search_box_navBar {
+    width: 40vh;
+    height: 5vh;
+    border-radius: 8px;
+}
