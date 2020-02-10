@@ -1,6 +1,6 @@
 <h2>please chek the values and add the book to your dashboard</h2>
 
-<form action="/index/add-books" method="post">
+<form action="/addBooks" method="post">
     <div>
         <img id="img_id" src="" alt="">
         <input id="image_value_id" type="hidden" name="image">
@@ -16,7 +16,7 @@
     <div id="authors_section">
         <label for="">Authors</label>
         <input id="author_id" type="text" name="author">
-    </div>
+    </div id="publishers_section">
     <div>
         <label for="">Publishers</label>
         <input id="publisher_id" type="text" name="publisher">
@@ -28,7 +28,12 @@
     </div>
     <div>
         <label for="">Description</label>
-        <input id="description_id" type="text" name="description">
+        <textarea id="description_id" name="description"></textarea>
+
+    </div>
+    <div>
+        <label for="">language</label>
+        <input id="language_id" type="text" name="language">
     </div>
     <div>
         <label for="">Category</label>
@@ -38,8 +43,16 @@
         <input id="published_date_id" type="text" name="publishedDate"></div>
     <div><label for="">Pages:</label>
         <input id="page_count_id" type="text" name="pageCount"></div>
-    <div><label for="">State</label>
-        <input id="state_id" type="text" name="state"></div>
+    <div><label for="">Choose a State: </label>
+        <select name="state" id="state_id">
+            <option value="">--Please choose an option--</option>
+            <option value="likenew">Like New</option>
+            <option value="verygood">Very Good</option>
+            <option value="good">Good</option>
+            <option value="acceptable">Acceptable</option>
+        </select>
+    </div>
+
     <div><label for="">Points to Earn </label>
         <input id="points_id" type="text" name="points"></div>
 
