@@ -52,8 +52,8 @@ window.addEventListener("load", () => {
     .addEventListener("click", function(event) {
       event.preventDefault();
       console.log("salut");
-      var test = getBooks(searchBooks.value);
-      //console.log(returndata);
+      var test  = getBooks(searchBooks.value);
+      console.log(returndata);
     });
 });
 
