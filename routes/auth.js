@@ -7,8 +7,9 @@ const bcrypt = require("bcryptjs");
 //router.get("/dashboard/:id", (req, res, next) => {
 
 router.get("/dashboard", (req, res, next) => {
+  console.log("info on the user ", req.session.currentUser._id);
   userModel
-    .findById("5e41ac75e3d87e5aecbe71a9")
+    .findById(req.session.currentUser._id)
     .populate({
       path: "books",
       match: { isAvailable: true }
@@ -30,7 +31,7 @@ router.post("/addBooks", (req, res, next) => {
     .then(createdBook => {
       userModel
         .findByIdAndUpdate(
-          "5e41ac75e3d87e5aecbe71a9",
+          req.session.currentUser._id,
           { $push: { books: createdBook._id } },
           { new: true }
         )
@@ -55,7 +56,7 @@ router.get("/deleteBook/:id", (req, res, next) => {
       console.log("on a bine suprime le livre");
       userModel
         .findByIdAndUpdate(
-          "5e41ac75e3d87e5aecbe71a9",
+          req.session.currentUser._id,
           { $pull: { books: req.params.id } },
           { new: true }
         )
