@@ -1,0 +1,30 @@
+.avatar {
+  vertical-align: middle;
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+}
+#dashboard-container-all-books {
+  margin: 5vh;
+}
+
+.dashboard-container-all-books {
+  margin: 2vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  grid-column-gap: 20px;
+  grid-row-gap: 20px;
+  border: solid 1px black;
+}
+
+.dashboard-list-books li {
+  display: block;
+  text-align: left;
+}
+.dashboard-list-books p {
+  font-weight: bold;
+  text-align: left;
+  margin-top: 0px;
+  float: left;
+  clear: both;
+}

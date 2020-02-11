@@ -3,47 +3,30 @@ const userModel = require("../models/Users");
 const express = require("express");
 const router = express.Router();
 
-router.post("/dahboard", (req, res, next) => {
-  const titleInput = req.body.title;
-  const regexp = new RegExp(titleInput, "gi");
-  const titleRegex = { $regex: regexp };
-  console.log("///////");
-  bookModel
-    .find({ title: titleRegex }) //ADD REGEX HERE
-    // .find({title: { $regex: /titleInput/, $options: "i" }})
-    .then(dbResults => {
-      console.log(dbResults);
-      res.render("all-books", {
-        books: dbResults
-      });
-    })
-    .catch(next);
-});
 //router.get("/dashboard/:id", (req, res, next) => {
 
 router.get("/dashboard", (req, res, next) => {
-  Promise.all([
-    userModel.findById(/*req.params.id*/ { _id: "5e41ac75e3d87e5aecbe71a9" }),
-    bookModel.find()
-  ])
-    .then(dbres => {
-      console.log(dbres[0]);
-      console.log(dbres[1]);
-      res.render("dashboard" /*, { user: dbRes[0], books: dbRes[1] }*/);
+  userModel
+    .findById("5e41ac75e3d87e5aecbe71a9")
+    .populate({
+      path: "books",
+      match: { isAvailable: true }
+    })
+    .then(dbresult => {
+      console.log(dbresult, "ici");
+      res.render("dashboard", { user: dbresult, books: dbresult.books });
     })
     .catch(next);
 });
 
 router.post("/addBooks", (req, res, next) => {
   const data = {
-    js: ["addBook"]
+    js: ["dashboard"]
   };
   const book = req.body;
-  console.log("book", req.body);
   bookModel
     .create(book)
     .then(createdBook => {
-      console.log("the data ", createdBook);
       userModel
         .findByIdAndUpdate(
           "5e41ac75e3d87e5aecbe71a9",
@@ -51,8 +34,7 @@ router.post("/addBooks", (req, res, next) => {
           { new: true }
         )
         .then(updatedBook => {
-          console.log("updatedBook", updatedBook);
-          res.render("dashboard");
+          res.redirect("/auth/dashboard");
         });
     })
     .catch(next);
@@ -62,6 +44,26 @@ router.get("/addBooks", (req, res, next) => {
     js: ["addBook"]
   };
   res.render("addBook", data);
+});
+
+router.get("/deleteBook/:id", (req, res, next) => {
+  console.log("the id ", req.params.id);
+  bookModel
+    .findByIdAndDelete(req.params.id)
+    .then(dbRes => {
+      console.log("on a bine suprime le livre");
+      userModel
+        .findByIdAndUpdate(
+          "5e41ac75e3d87e5aecbe71a9",
+          { $pull: { books: req.params.id } },
+          { new: true }
+        )
+        .then(userModified => {
+          console.log("userModified", userModified);
+          res.redirect("/auth/dashboard");
+        });
+    })
+    .catch(next);
 });
 
 module.exports = router;

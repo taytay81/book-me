@@ -9,6 +9,9 @@ const userSchema = new Schema({
   adress: String,
   telephone: Number,
   postcode: String,
+  city: String,
+  avatar: String,
+  userPoints: Number,
   books: [
     {
       type: Schema.Types.ObjectId,

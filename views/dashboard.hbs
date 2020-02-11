@@ -1,28 +1,54 @@
 <form action="auth/user/edit">
     <form action="">
         <div class="dashboard-user-section">
-            <label for="">email</label>
-            <input id="email-id" type="text" name="email" value={{user.email}}>
-            <label for="">name</label>
-            <input id="name-id" type="text" name="name" value={{user.name}}>
-            <label for="">firstname</label>
-            <input id="firstname-id" type="text" name="firstname" value={{user.firstname}}>
-            <label for="">password</label>
-            <input id="password-id" type="text" name="password" value={{user.password}}>
-            <label for="">adress</label>
-            <input id="adress-id" type="text" name="adress" value={{user.adress}}>
-            <label for="">post code</label>
-            <input id="postcode-id" type="text" name="postcode" value={{user.postcode}}>
-            <label for="">telephone</label>
-            <input id="telephone-id" type="text" name="telephone" value={{user.telephone}}>
+            <img src="{{user.avatar}}" alt="avatar" class="avatar">
+            <h2>Hello, My name is {{user.firstname}} {{user.name}}</h2>
+            <h5>leaving in {{user.city}}</h6>
+                <h6>{{user.email}}</h6>
+                <h6>{{user.userPoints}} Points available</h6>
         </div>
-        <button>update user</button>
+        <hr>
     </form>
 
     <div class="dashboard-books-section">
         <div class="dashboard-book-to-sell-section">
+            <h3>My personal Books I want to Exchange</h3>
+            <div id="dashboard-container-all-books">
+                
+                {{#each books}}
+                <ul class="dashboard-list-books">
 
-            <div>
+                    <li><img src="{{this.image}}" alt="cover of book"></li>
+
+                    <li>
+                        <p>Title:</p>{{this.title}}
+                    </li>
+
+                    <li>
+                        <p>Authors:</p>{{this.author}}
+                    </li>
+
+                    <li>
+                        <p>Category:</p>{{this.category}}
+                    </li>
+
+                    <li>
+                        <p>State:</p>{{this.state}}
+                    </li>
+
+                    <li>
+                        <p>Point to Earn:</p> {{this.points}} pts
+                    </li>
+
+                    <a href="/auth/deleteBook/{{this._id}}" class="fa fa-trash table-icon" data-id-book="{{this._id}}"
+                        aria-hidden="true"></a>
+
+
+
+                    <button>update</button>
+
+                </ul>
+                {{/each}}
 
             </div>
         </div>
