@@ -1,29 +1,29 @@
 #pic-container {
-    display: flex;
-    justify-content: center;
-    padding: 5vh;
+  display: flex;
+  justify-content: center;
+  padding: 0.02vh;
 }
 
 #book-homepage {
-    max-width: 100%;
-    height: 60vh;
+  max-width: 100%;
+  height: 70vh;
 }
 
 h1 {
-    text-align: center;
+  text-align: center;
 }
 
 #favorite-list {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
 }
 
 #favorite-list li {
-    margin: 4vh;
-    list-style: none;
-    width: 40vh;
-    height: 60vh;
-    border: solid 1px black;
-    border-radius: 8px;
+  margin: 4vh;
+  list-style: none;
+  width: 40vh;
+  height: 60vh;
+  border: solid 1px black;
+  border-radius: 8px;
 }
