@@ -123,7 +123,8 @@ router.post("/signin", (req, res, next) => {
         const { _doc: clone } = { ...dbRes }; // make a clone of db user
         delete clone.password; // remove password from clone
         // console.log(clone);
-        req.session.currentUser = clone; // user is now in session... until session.destroy
+        req.session.currentUser = clone;
+        console.log("iciciciicic", req.session.currentUser._id) // user is now in session... until session.destroy
         return res.redirect("/books/all");
       } else {
         // encrypted password match failed
@@ -140,6 +141,20 @@ router.get("/logout", (req, res) => {
     res.locals.isLoggedIn = undefined;
     res.redirect("/auth/signin");
   });
+});
+
+
+// BUY A BOOK
+
+router.get("/buyBook/:id", (req, res, next) => {
+  console.log("the id ", req.params.id);
+  bookModel
+    .findById(req.params.id) // ADD USER ID WITH SESSION
+    .then(dbRes => {
+      console.log("on a bine suprime le livre", dbRes);
+      res.redirect("/");
+    })
+    .catch(next);
 });
 
 module.exports = router;

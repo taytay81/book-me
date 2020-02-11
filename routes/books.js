@@ -13,7 +13,7 @@ router.get("/all", (req, res, next) => {
   bookModel
     .find({$or: [{title: {$regex : regexptitle}},{ author: {$regex : regexpauthor}}, ]})
     .then(dbResults => {
-      console.log(dbResults);
+      // console.log(dbResults);
       res.render("all-books", {
         books: dbResults
       });
@@ -30,7 +30,7 @@ router.get("/all", (req, res, next) => {
     bookModel
       .find({$or: [{title: {$regex : regexptitle}},{ author: {$regex : regexpauthor}}, ]})
       .then(dbResults => {
-        console.log(dbResults);
+        // console.log(dbResults);
         res.render("all-books", {
           books: dbResults
         });
