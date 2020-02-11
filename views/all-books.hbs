@@ -15,8 +15,15 @@
             <li>Genre: {{this.category}}</li>
             <li>State: {{this.state}}</li>
             <li>Points: {{this.points}}</li>
+            {{#if isLoggedIn}} 
+                <p>YO</p>
+                <a href="/auth/addBooks"><i class="fas fa-plus-square"></i></a>
+            {{/if}}
         </ul>
     </li>
     {{/each}}
 </ul>
+{{#if isLoggedIn}}
+        <h2>Hello there</h2>
+{{/if}}
 </div>

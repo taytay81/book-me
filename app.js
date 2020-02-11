@@ -11,10 +11,10 @@ const path = require("path");
 const express = require("express");
 const hbs = require("hbs");
 const app = express();
-//const session = require("express-session");
+const session = require("express-session");
 const mongoose = require("mongoose");
-//const MongoStore = require("connect-mongo")(session);
 const cookieParser = require("cookie-parser");
+const MongoStore = require("connect-mongo")(session);
 app.set("view engine", "hbs");
 app.set("views", __dirname + "/views");
 app.use(express.static("public"));
@@ -61,6 +61,32 @@ app.use(
     sourceMap: true
   })
 );
+
+app.use(
+  session({
+    secret: process.env.SESSION_SECRET,
+    cookie: { maxAge: 60000 }, // in millisec
+    store: new MongoStore({
+      mongooseConnection: mongoose.connection,
+      ttl: 24 * 60 * 60 // 1 day
+    }),
+    saveUninitialized: true,
+    resave: true
+  })
+);
+
+// CHECK LOGIN STATUS
+
+function checkloginStatus(req, res, next) {
+  res.locals.user = req.session.currentUser ? req.session.currentUser : null;
+  // access this value @ {{user}} or {{user.prop}} in .hbs
+  res.locals.isLoggedIn = Boolean(req.session.currentUser);
+  // access this value @ {{isLoggedIn}} in .hbs
+  next(); // continue to the requested route
+}
+
+app.use(checkloginStatus);
+
 
 // default value for title local
 app.locals.title = "Express - Generated with IronGenerator";

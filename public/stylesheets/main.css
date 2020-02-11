@@ -2,6 +2,8 @@
 @import './list-allBooks.css';
 @import './addBook.css';
 @import './homePage.css';
+@import './signup-login.css';
+@import './form.css';
 
 
 * {
