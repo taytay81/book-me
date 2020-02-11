@@ -1,5 +1,4 @@
-
- <nav id="nav-main" class="nav">
+<nav id="nav-main" class="nav">
     <div id="logo-container">
         <a href="/" class="logo">Logo</a>
     </div>
@@ -8,12 +7,16 @@
             <input type="text" class="input" id="search_box_navBar" name="query"
             placeholder="Search by title or author..." onfocus=this.placeholder="">
             <button type="submit" class="btn" id="btn_search_home"><i class="fas fa-search"></i></button>
-            </div>
-        </form>
+    </div>
+    </form>
     </div>
     <div id="sign-container">
         <a href="#" class="link">Sign in</a>
         <a href="#" class="link">Sign out</a>
+    </div>
+    <div>
+        <a href="/auth/addBooks" class="link">add a book</a>
+        <a href="/auth/dashboard" class="link">access dashboard</a>
     </div>
     {{!-- {{#unless isLoggedIn}}
     <a href="/auth/signin" class="link">| <i class="fa fa-user fa-1x"></i></a>
@@ -22,4 +25,3 @@
     <a href="/dashboard">| <i class="fa fa-user fa-1x"></i></a>
     {{/if}} --}}
 </nav>
-
