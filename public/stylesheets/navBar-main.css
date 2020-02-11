@@ -7,6 +7,17 @@
     align-items: center;
 }
 
+#nav-main #logo-container {
+    height: 10vh;
+    width: 10vh;
+}
+
+#nav-main #logo-container a img {
+    height: 10vh;
+    width: 10vh;
+}
+
+
 #search_box_navBar {
     width: 40vh;
     height: 5vh;

@@ -171,12 +171,16 @@ router.get("/logout", (req, res) => {
 // BUY A BOOK
 
 router.get("/buyBook/:id", (req, res, next) => {
-  console.log("the id ", req.params.id);
-  bookModel
-    .findById(req.params.id) // ADD USER ID WITH SESSION
+  Promise.all([
+    bookModel.findById(req.params.id),
+    userModel.findById(req.session.currentUser)
+  ])
     .then(dbRes => {
-      console.log("on a bine suprime le livre", dbRes);
-      res.redirect("/");
+      dbRes[0].isAvailable = false;
+      dbRes[1].books_bought.push(req.params.id);
+      console.log("la", dbRes[0].isAvailable);
+      console.log("icii", dbRes[1].books_bought);
+      res.redirect("/auth/dashboard");
     })
     .catch(next);
 });

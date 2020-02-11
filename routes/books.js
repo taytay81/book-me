@@ -28,7 +28,7 @@ router.get("/all", (req, res, next) => {
     const authorInput = req.body.query;
     const regexpauthor = new RegExp(authorInput,"gi") 
     bookModel
-      .find({$or: [{title: {$regex : regexptitle}},{ author: {$regex : regexpauthor}}, ]})
+      .find({$or: [{title: {$regex : regexptitle}},{ author: {$regex : regexpauthor}}, {isAvailable : {$eq: true}} ]})
       .then(dbResults => {
         // console.log(dbResults);
         res.render("all-books", {
@@ -46,13 +46,7 @@ router.get("/all", (req, res, next) => {
   });
 
 
-//  BUY A BOOK
-
-// router.post("/add", (req, res, next) => {
-//   const 
-// }) 
 
 
 module.exports = router;
 
-// {title: { $regex: req.body, $options: "i" } }

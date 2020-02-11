@@ -16,13 +16,16 @@ const userSchema = new Schema({
     {
       type: Schema.Types.ObjectId,
       ref: "Books",
-      required: true
+      required: true,
+      default: 0
     }
   ],
   books_bought: [
     {
       type: Schema.Types.ObjectId,
       ref: "Books",
+      required: true,
+      default: 0
     }
   ]
 });
