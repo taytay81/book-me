@@ -1,25 +1,47 @@
 {{>navBar}}
 <div id="container-all-books">
-<h1>All books</h1>
-{{#unless books}}
-<p>No books yet.</p>
-{{/unless}}
-
-<ul class="list-books">
-    {{#unless isLoggedIn}}
-    {{#each books}}
-    <li class="books">
-        <ul class="book-items">
-            <li><img src="{{this.image}}" alt="cover of book"></li>
-            <li>Title: {{this.title}}</li>
-            <li>Authors: {{this.author}}</li>
-            <li>Genre: {{this.category}}</li>
-            <li>State: {{this.state}}</li>
-            <li>Points: {{this.points}}</li>
-        </ul>
-    </li>
-    {{/each}}
+    <h1>All books</h1>
+    {{#unless books}}
+    <p>No books yet.</p>
     {{/unless}}
+
+    <ul class="list-books">
+        {{#unless isLoggedIn}}
+        {{#each books}}
+        <li class="books">
+            <ul class="book-items">
+                <li>
+                    <a href="/auth/printBookDetailled/{{this._id}}">
+                        <img src="{{this.image}}" alt="cover of book">
+                    </a>
+                </li>
+                <li>Title: {{this.title}}</li>
+                <li>Authors: {{this.author}}</li>
+                <li>Genre: {{this.category}}</li>
+                <li>State: {{this.state}}</li>
+                <li>Points: {{this.points}}</li>
+            </ul>
+        </li>
+        {{/each}}
+        {{/unless}}
+        {{#if isLoggedIn}}
+        {{#each books}}
+        <li class="books">
+            <ul class="book-items">
+                <a href="/auth/printBookDetailled/{{this._id}}">
+                    <img src="{{this.image}}" alt="cover of book">
+                </a>
+                <li>Title: {{this.title}}</li>
+                <li>Authors: {{this.author}}</li>
+                <li>Genre: {{this.category}}</li>
+                <li>State: {{this.state}}</li>
+                <li>Points: {{this.points}}</li>
+                <a href="/auth/addBooks"><i class="fas fa-plus-square"></i></a>
+            </ul>
+        </li>
+        {{/each}}
+        {{/if}}
+    </ul>
     {{#if isLoggedIn}}
     {{#each books}}
     <li class="books">
@@ -35,10 +57,6 @@
     </li>
     {{/each}}
     {{/if}}
-</ul>
-{{#if isLoggedIn}}
-        <h2>Hello there</h2>
-{{/if}}
 </div>
 
 {{!-- {{#if isLoggedIn}} 

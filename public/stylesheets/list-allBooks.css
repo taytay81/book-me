@@ -1,37 +1,36 @@
-#container-all-books{
-    margin: 5vh;
+#container-all-books {
+  margin: 5vh;
 }
 
 .list-books {
-    margin: 2vh;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-    grid-column-gap: 8vh;
-    grid-row-gap: 8vh;
+  margin: 2vh;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+  grid-column-gap: 8vh;
+  grid-row-gap: 8vh;
 }
 
 .list-books .books {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: solid 1px black;
-    border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow: 10px 5px 5px #ededed;
 }
 
 .list-books li img {
-    align-self: center;
-    max-width: 100%;
-    height: 20vh;
+  align-self: center;
+  max-width: 100%;
+  height: 20vh;
 }
 
 .book-items {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .book-items > li {
-    font-size: 1.5vh;
-    margin: 0.5vh 0;
+  font-size: 1.5vh;
+  margin: 0.5vh 0;
 }
-
