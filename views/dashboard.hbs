@@ -5,7 +5,7 @@
             <h2>Hello, My name is {{user.firstname}} {{user.name}}</h2>
             <h5>leaving in {{user.city}}</h6>
                 <h6>{{user.email}}</h6>
-                <h6>{{user.userPoints}} Points available</h6>
+                <h6>{{user.points}} Points available</h6>
         </div>
         <hr>
     </form>
@@ -14,7 +14,7 @@
         <div class="dashboard-book-to-sell-section">
             <h3>My personal Books I want to Exchange</h3>
             <div id="dashboard-container-all-books">
-                
+
                 {{#each books}}
                 <ul class="dashboard-list-books">
 

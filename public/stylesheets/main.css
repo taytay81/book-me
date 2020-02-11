@@ -1,8 +1,10 @@
+@import "./dashboard.css";
 @import "./navBar-main.css";
 @import "./list-allBooks.css";
 @import "./addBook.css";
 @import "./homePage.css";
-@import "./dashboard.css";
+@import "./signup-login.css";
+@import "./form.css";
 
 * {
   padding: 0;
