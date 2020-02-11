@@ -18,13 +18,13 @@ const router = express.Router();
 //   });
 
   router.post("/all", (req, res, next) => {
-    const titleInput = req.body.title;
-    const regexp = new RegExp(titleInput,"gi") 
-    const titleRegex = {$regex : regexp};
-    console.log("///////");
+    const titleInput = req.body.query;
+    const regexptitle = new RegExp(titleInput,"gi") 
+
+    const authorInput = req.body.query;
+    const regexpauthor = new RegExp(authorInput,"gi") 
     bookModel
-      .find({title: titleRegex}) //ADD REGEX HERE
-      // .find({title: { $regex: /titleInput/, $options: "i" }})
+      .find({$or: [{title: {$regex : regexptitle}},{ author: {$regex : regexpauthor}}]}) //ADD REGEX HERE
       .then(dbResults => {
         console.log(dbResults);
         res.render("all-books", {
