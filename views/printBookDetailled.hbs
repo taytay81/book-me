@@ -1,0 +1,26 @@
+{{>navBar}}
+<div id="container-book-detailled">
+  <h1>book detailled </h1>
+
+
+  <ul class="list-books">
+    <li class="books">
+      <ul class="book-items">
+        <li><img src="{{book.image}}" alt="cover of book"></li>
+        <li>Title: {{book.title}}</li>
+        <li>Author: {{book.author}}</li>
+        <li>Genre: {{book.category}}</li>
+        <li>State: {{book.state}}</li>
+        <li>Publisher: {{book.publisher}}</li>
+        <li>Price: {{book.price}}</li>
+        <li>Description: {{book.description}}</li>
+        <li>Published Date: {{book.publishedDate}}</li>
+        <li>Pages Number: {{book.pageCount}}</li>
+        <li>Language: {{book.language}}</li>
+        <li>State: {{book.state}}</li>
+        <li>Likes: {{book.likes}}</li>
+        <a href="/auth/addBooks"><i class="fas fa-plus-square"></i></a>
+      </ul>
+    </li>
+  </ul>
+</div>

@@ -7,7 +7,6 @@ const bcrypt = require("bcryptjs");
 //router.get("/dashboard/:id", (req, res, next) => {
 
 router.get("/dashboard", (req, res, next) => {
-  console.log("info on the user ", req.session.currentUser._id);
   userModel
     .findById(req.session.currentUser._id)
     .populate({
@@ -15,7 +14,6 @@ router.get("/dashboard", (req, res, next) => {
       match: { isAvailable: true }
     })
     .then(dbresult => {
-      console.log(dbresult, "ici");
       res.render("dashboard", { user: dbresult, books: dbresult.books });
     })
     .catch(next);
@@ -48,12 +46,40 @@ router.get("/addBooks", (req, res, next) => {
   res.render("addBook", data);
 });
 
+router.post("/editBook/:id", (req, res, next) => {
+  bookModel
+    .findByIdAndUpdate(req.params.id, req.body)
+    .then(() => {
+      res.redirect("/auth/dashboard");
+    })
+    .catch(next);
+});
+router.get("/printBookDetailled/:id", (req, res, next) => {
+  console.log("hello");
+  bookModel
+    .findById(req.params.id)
+    .then(book => {
+      console.log(book);
+      res.render("printBookDetailled", { book });
+    })
+    .catch(next);
+});
+
+router.get("/editBook/:id", (req, res, next) => {
+  console.log("hello");
+  bookModel
+    .findById(req.params.id)
+    .then(book => {
+      console.log(book);
+      res.render("editBook", { book });
+    })
+    .catch(next);
+});
+
 router.get("/deleteBook/:id", (req, res, next) => {
-  console.log("the id ", req.params.id);
   bookModel
     .findByIdAndDelete(req.params.id)
     .then(dbRes => {
-      console.log("on a bine suprime le livre");
       userModel
         .findByIdAndUpdate(
           req.session.currentUser._id,
@@ -61,7 +87,6 @@ router.get("/deleteBook/:id", (req, res, next) => {
           { new: true }
         )
         .then(userModified => {
-          console.log("userModified", userModified);
           res.redirect("/auth/dashboard");
         });
     })
@@ -83,7 +108,6 @@ router.post("/signup", (req, res, next) => {
     userModel
       .findOne({ email: user.email })
       .then(dbRes => {
-        console.log("iccccccci", dbRes);
         if (dbRes) {
           return res.redirect("/auth/signup"); //
         }
@@ -93,7 +117,6 @@ router.post("/signup", (req, res, next) => {
         user.password = hashed; // new user is ready for db
 
         userModel.create(user).then(() => res.redirect("/auth/signin"));
-        // .catch(dbErr => console.log(dbErr));
       })
       .catch(next);
   }

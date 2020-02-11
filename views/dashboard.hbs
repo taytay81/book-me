@@ -1,3 +1,4 @@
+{{>navBar}}
 <form action="auth/user/edit">
     <form action="">
         <div class="dashboard-user-section">
@@ -42,10 +43,12 @@
 
                     <a href="/auth/deleteBook/{{this._id}}" class="fa fa-trash table-icon" data-id-book="{{this._id}}"
                         aria-hidden="true"></a>
+                    <a href="/auth/editBook/{{this._id}}" class="fa fa-edit table-icon" data-id-book="{{this._id}}"
+                        aria-hidden="true"></a>
 
 
 
-                    <button>update</button>
+
 
                 </ul>
                 {{/each}}
