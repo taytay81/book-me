@@ -13,7 +13,10 @@ const bookSchema = new Schema({
   pageCount: Number,
   language: String,
   image: String,
-  state: { type: String, enum: ["as new", "very good", "good", "acceptable"] },
+  state: {
+    type: String,
+    enum: ["as new", "very good", "good", "acceptable", ""]
+  },
   points: String,
   isAvailable: { type: Boolean, default: true },
   likes: { type: Number, default: 0 }
