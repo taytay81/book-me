@@ -42,8 +42,18 @@ router.post("/addBooks", (req, res, next) => {
   console.log("book", req.body);
   bookModel
     .create(book)
-    .then(() => {
-      res.render("addBook", data);
+    .then(createdBook => {
+      console.log("the data ", createdBook);
+      userModel
+        .findByIdAndUpdate(
+          "5e41ac75e3d87e5aecbe71a9",
+          { $push: { books: createdBook._id } },
+          { new: true }
+        )
+        .then(updatedBook => {
+          console.log("updatedBook", updatedBook);
+          res.render("dashboard");
+        });
     })
     .catch(next);
 });
