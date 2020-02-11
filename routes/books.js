@@ -22,7 +22,7 @@ router.get("/all", (req, res, next) => {
       ]
     })
     .then(dbResults => {
-      console.log(dbResults);
+      // console.log(dbResults);
       res.render("all-books", {
         books: dbResults
       });
