@@ -6,10 +6,32 @@
     margin: 2vh;
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
-    grid-column-gap: 20px;
-    grid-row-gap: 20px;
+    grid-column-gap: 8vh;
+    grid-row-gap: 8vh;
 }
 
-.list-books li {
-    display: block;
+.list-books .books {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid 1px black;
+    border-radius: 8px;
 }
+
+.list-books li img {
+    align-self: center;
+    max-width: 100%;
+    height: 20vh;
+}
+
+.book-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.book-items > li {
+    font-size: 1.5vh;
+    margin: 0.5vh 0;
+}
+
