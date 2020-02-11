@@ -2,14 +2,10 @@ const buyButton = document.getElementsByClassName("fa-plus-square");
 const bookModel = require("../models/Books");
 const userModel = require("../models/Users");
 
-function displayAddBtn() {
-    if ()
-}
 
-
-function buyBook(){
-    if (this.user.points >= this.book.points) {
-        this.user.points -=  this.book.points;
+function checkuserpoints(user, book){
+    if (user.points >= book.points) {
+        user.points -= book.points;
         console.log("succesfull book added");
     }
     else {
@@ -17,4 +13,4 @@ function buyBook(){
     }
 }
 
-buyButton.onclick = buyBook
+buyButton.onclick = checkuserpoints
