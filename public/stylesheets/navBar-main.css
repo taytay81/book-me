@@ -57,8 +57,8 @@ button:focus {
 }
 .avatar-navbar {
   vertical-align: middle;
-  width: 50px;
-  height: 50px;
+  width: 9.7vh;
+  height: 9.7vh;
   border-radius: 50%;
 }
 a {
@@ -102,13 +102,28 @@ a {
 }
 
 .dropdown-content a:hover {
-  background-color: #ddd;
+  background-color: #e5dfdf;
 }
 
 .dropdown:hover .dropdown-content {
+  padding: 1vh 0;
   display: block;
+  background-color: #6ba8a9;
 }
 
 .dropdown:hover .dropbtn {
   background-color: #3e8e41;
+}
+
+.dropbtn {
+  background-color: #1d4d4f;
+  border: none;
+}
+
+.dropdown-content:hover > a {
+  color: #1d4d4f;
+}
+
+.dropdown-content > a {
+  color: #1d4d4f;
 }

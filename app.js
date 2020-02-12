@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 mongoose
-  .connect(process.env.MONGO_URI, { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
@@ -68,7 +68,7 @@ app.use(
     cookie: { maxAge: 60000 }, // in millisec
     store: new MongoStore({
       mongooseConnection: mongoose.connection,
-      ttl: 24 * 60 * 60 // 1 day
+      ttl: 30 * 60 * 1000 // 1 day
     }),
     saveUninitialized: true,
     resave: true

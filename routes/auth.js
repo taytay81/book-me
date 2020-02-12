@@ -1,5 +1,5 @@
 const bookModel = require("../models/Books");
-const userModel = require("../models/Users");
+const userModel = require("../models/users");
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
@@ -11,14 +11,17 @@ router.get("/dashboard", (req, res, next) => {
   console.log(req.session.currentUser._id);
   userModel
     .findById(req.session.currentUser._id)
-    .populate(
-      [{path: "books",
-      match: { isAvailable: true }},
-      {path: "books_bought",
-      match: { isAvailable: false }}
+    .populate([
+      { path: "books", match: { isAvailable: true } },
+      { path: "books_bought", match: { isAvailable: false } }
     ])
     .then(dbresult => {
-      res.render("dashboard", { user: dbresult, books: dbresult.books, books_bought: dbresult.books_bought});
+      console.log(dbresult);
+      res.render("dashboard", {
+        user: dbresult,
+        books: dbresult.books,
+        books_bought: dbresult.books_bought
+      });
     })
     .catch(next);
 });
@@ -215,11 +218,12 @@ router.get("/myprofile", (req, res, next) => {
 // POST MY PROFILE
 
 router.post("/myprofile", uploadCloud.single("avatar"), (req, res, next) => {
-  const user = req.body;
-  console.log("ici c'est l'avatar", user);
-  if (req.file) user.avatar = req.file.secure_url;
+  const user = req.session.currentUser
+  let avatar
+  if (req.file) avatar = req.file.secure_url;
+  console.log(req.file)
   userModel
-    .create(user)
+    .findByIdAndUpdate(user._id, {avatar: avatar}, {new:true})
     .then(() => {
       res.redirect("/auth/myprofile");
     })
@@ -239,6 +243,5 @@ router.post("/myprofile", uploadCloud.single("avatar"), (req, res, next) => {
 //     })
 //     .catch(next);
 // });
-
 
 module.exports = router;
