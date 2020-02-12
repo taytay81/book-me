@@ -7,7 +7,6 @@ const bcrypt = require("bcryptjs");
 //router.get("/dashboard/:id", (req, res, next) => {
 
 router.get("/dashboard", (req, res, next) => {
-  console.log(req.session.currentUser._id);
   userModel
     .findById(req.session.currentUser._id)
     .populate([
@@ -61,18 +60,16 @@ router.post("/editBook/:id", (req, res, next) => {
     .catch(next);
 });
 router.get("/printBookDetailled/:id", (req, res, next) => {
-  console.log("hello");
   bookModel
     .findById(req.params.id)
     .then(book => {
-      console.log(book);
+      
       res.render("printBookDetailled", { book });
     })
     .catch(next);
 });
 
 router.get("/editBook/:id", (req, res, next) => {
-  console.log("hello");
   bookModel
     .findById(req.params.id)
     .then(book => {
@@ -152,12 +149,9 @@ router.post("/signin", (req, res, next) => {
         // encryption says : password match success
         const { _doc: clone } = { ...dbRes }; // make a clone of db user
         delete clone.password; // remove password from clone
-        // console.log(clone);
         req.session.currentUser = clone;
-        console.log("iciciciicic", req.session.currentUser._id); // user is now in session... until session.destroy
         return res.redirect("/books/all");
       } else {
-        // encrypted password match failed
         return res.redirect("/auth/signin");
       }
     })
@@ -195,9 +189,6 @@ router.get("/buyBook/:id", (req, res, next) => {
             { new: true }
           )
         ]).then(added_Book => {
-          console.log("book was added and database updated");
-          console.log(dbRes);
-          // res.render("dashboard", {books_bought: dbRes[0]})
           res.redirect("/auth/dashboard");
         });
       } else {
@@ -209,18 +200,6 @@ router.get("/buyBook/:id", (req, res, next) => {
     .catch(next);
 });
 
-// Promise.all([
-//   bookModel.findByIdAndUpdate(req.params.id, {isAvailable : false}),
-//   userModel.findByIdAndUpdate(req.session.currentUser, )
-// ])
-//     .then(dbRes => {
-//       // dbRes[0].isAvailable = false;
-//       // dbRes[1].books_bought.push(req.params.id);
-//       console.log("la", dbRes[0].isAvailable);
-//       console.log("icii", dbRes[1].books_bought);
-//       res.redirect("/auth/dashboard");
-//     })
-//     .catch(next);
-// });
+
 
 module.exports = router;

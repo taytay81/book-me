@@ -22,7 +22,6 @@ router.get("/all", (req, res, next) => {
       ]
     })
     .then(dbResults => {
-      console.log(dbResults);
       res.render("all-books", { books: dbResults });
     })
     .catch(next);
@@ -34,21 +33,17 @@ router.post("/all", (req, res, next) => {
   const authorInput = req.body.query;
   const regexpauthor = new RegExp(authorInput, "gi");
   bookModel
-    .find(
-      /*{$or: [{title: {$regex : regexptitle}},{ author: {$regex : regexpauthor}}, ]}*/
-
-      {
-        $and: [
-          {
-            $or: [
-              { title: { $regex: regexptitle } },
-              { author: { $regex: regexpauthor } }
-            ]
-          },
-          { isAvailable: true }
-        ]
-      }
-    )
+    .find({
+      $and: [
+        {
+          $or: [
+            { title: { $regex: regexptitle } },
+            { author: { $regex: regexpauthor } }
+          ]
+        },
+        { isAvailable: true }
+      ]
+    })
     .then(dbResults => {
       res.render("all-books", {
         books: dbResults
@@ -56,7 +51,5 @@ router.post("/all", (req, res, next) => {
     })
     .catch(next);
 });
-
-
 
 module.exports = router;

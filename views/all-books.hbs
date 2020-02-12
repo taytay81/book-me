@@ -2,7 +2,7 @@
 <div id="container-all-books">
     <h1>All books</h1>
     {{#unless books}}
-    <p>No books yet.</p>
+    <p>No books found.</p>
     {{/unless}}
 
     <ul class="list-books">
@@ -21,8 +21,6 @@
                 <li>State: {{this.state}}</li>
                 <li>Points: {{this.points}}</li>
                 <a href="" class="like-link" custom-book-id={{this._id}}><i class="fas fa-heart"></i></a>
-
-
             </ul>
         </li>
         {{/each}}
@@ -39,12 +37,10 @@
                 <li>Authors: {{this.author}}</li>
                 <li>Genre: {{this.category}}</li>
                 <li>State: {{this.state}}</li>
-                <li>Points: {{this.points}}</li>
+                <li>Take it for just : {{this.points}} pts</li>
+                <li>Sold by: {{user.name}} {{user.firstname}} <img src="{{user.avatar}}" alt=""></li>
 
-                <a href="" class="like-link"><i class="fas fa-heart"></i></a>
-
-
-
+                <a href="" class="like-link" custom-book-id={{this._id}}><i class="fas fa-heart"></i></a>
                 <a href="/auth/buyBook/{{this._id}}"><i class="fas fa-plus-square"></i></a>
             </ul>
         </li>

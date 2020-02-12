@@ -12,24 +12,34 @@ function printlikesNumber(e) {
 }
 
 window.addEventListener("load", () => {
-  console.log("IronGenerator JS imported successfully!");
-  console.log("super on est ici ");
   event.preventDefault();
   var likesButton = document.getElementsByClassName("like-link");
-
   for (let i = 0; i < likesButton.length; i++) {
     likesButton[i].addEventListener("mouseover", function(event) {
+      event.preventDefault();
+      var bookId = likesButton[i].attributes["custom-book-id"].textContent;
+      axios
+        .get("http://localhost:3000/getLikes/" + bookId)
+        .then(response => {
+          likesButton[i].setAttribute("title", response.data.likes + "likes");
+        })
+        .catch(error => {
+          console.log("Error is: ", error);
+        });
+
+    });
+    likesButton[i].addEventListener("click", function(event) {
       event.preventDefault();
       console.log(likesButton[i]);
       var bookId = likesButton[i].attributes["custom-book-id"].textContent;
       axios
-        .get("http://localhost:3000/getLikes/" + bookId)
+        .post("http://localhost:3000/getLikes/" + bookId)
         .then(response => {
           console.log(response.data.likes);
           likesButton[i].setAttribute("title", response.data.likes + "likes");
         })
         .catch(error => {
-          console.log("Oh No! Error is: ", error);
+          console.log("Error is: ", error);
         });
 
       console.log(bookId);
