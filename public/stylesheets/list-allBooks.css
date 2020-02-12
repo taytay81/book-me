@@ -32,5 +32,10 @@
 
 .allbooks-book-items > li {
   font-size: 1.5vh;
-  margin: 0.5vh 0;
+  margin: 0.7vh 0;
+}
+
+.allbooks-book-items a i {
+  margin-top: 0.4vh;
+  font-size: 2vh;
 }

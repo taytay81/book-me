@@ -7,14 +7,18 @@ const bcrypt = require("bcryptjs");
 //router.get("/dashboard/:id", (req, res, next) => {
 
 router.get("/dashboard", (req, res, next) => {
+  console.log(req.session.currentUser._id);
   userModel
     .findById(req.session.currentUser._id)
-    .populate({
-      path: "books",
-      match: { isAvailable: true }
-    })
+    .populate(
+      [{path: "books",
+      match: { isAvailable: true }},
+      {path: "books_bought",
+      match: { isAvailable: false }}
+    ])
     .then(dbresult => {
-      res.render("dashboard", { user: dbresult, books: dbresult.books });
+      console.log(dbresult);
+      res.render("dashboard", { user: dbresult, books: dbresult.books, books_bought: dbresult.books_bought});
     })
     .catch(next);
 });
@@ -171,18 +175,51 @@ router.get("/logout", (req, res) => {
 // BUY A BOOK
 
 router.get("/buyBook/:id", (req, res, next) => {
+  const currentBookId = req.params.id;
+  const currentUserId = req.session.currentUser;
+
   Promise.all([
-    bookModel.findById(req.params.id),
-    userModel.findById(req.session.currentUser)
+    bookModel.findById(currentBookId),
+    userModel.findById(currentUserId)
   ])
-    .then(dbRes => {
-      dbRes[0].isAvailable = false;
-      dbRes[1].books_bought.push(req.params.id);
-      console.log("la", dbRes[0].isAvailable);
-      console.log("icii", dbRes[1].books_bought);
-      res.redirect("/auth/dashboard");
-    })
-    .catch(next);
+  .then(dbRes => {
+    if (dbRes[1].points >= dbRes[0].points) {
+      dbRes[1].points -= dbRes[0].points;
+      console.log("user has enough points");
+      Promise.all([
+        bookModel.findByIdAndUpdate(currentBookId, {isAvailable : false}),
+        userModel.findByIdAndUpdate(currentUserId, { $push: { books_bought: currentBookId } },
+          { new: true })
+      ])
+      .then(added_Book => {
+      console.log("book was added and database updated");
+      console.log(dbRes);
+      // res.render("dashboard", {books_bought: dbRes[0]})
+      res.redirect("/auth/dashboard")
+      })
+    }  
+      else {
+      return(
+      console.log("Unfortunately, you don't have enough points to buy this book. Add your used book to the platform to gain some points :) ")
+      )}
+  })
+  .catch(next);
 });
+
+
+  // Promise.all([
+  //   bookModel.findByIdAndUpdate(req.params.id, {isAvailable : false}),
+  //   userModel.findByIdAndUpdate(req.session.currentUser, )
+  // ])
+//     .then(dbRes => {
+//       // dbRes[0].isAvailable = false;
+//       // dbRes[1].books_bought.push(req.params.id);
+//       console.log("la", dbRes[0].isAvailable);
+//       console.log("icii", dbRes[1].books_bought);
+//       res.redirect("/auth/dashboard");
+//     })
+//     .catch(next);
+// });
+
 
 module.exports = router;
