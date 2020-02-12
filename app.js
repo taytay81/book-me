@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 mongoose
-  .connect("mongodb://localhost/book-me", { useNewUrlParser: true })
+  .connect(process.env.MONGODB_URI, { useNewUrlParser: true })
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`
@@ -86,7 +86,6 @@ function checkloginStatus(req, res, next) {
 }
 
 app.use(checkloginStatus);
-
 
 // default value for title local
 app.locals.title = "Express - Generated with IronGenerator";
