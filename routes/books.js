@@ -5,6 +5,10 @@ const router = express.Router();
 /* GET all books page */
 
 router.get("/all", (req, res, next) => {
+  /*const data = {
+    js: ["addBook"],
+    books: []
+  };*/
   const titleInput = req.body.query;
   const regexptitle = new RegExp(titleInput, "gi");
   const authorInput = req.body.query;
@@ -22,10 +26,20 @@ router.get("/all", (req, res, next) => {
       ]
     })
     .then(dbResults => {
-      // console.log(dbResults);
-      res.render("all-books", {
-        books: dbResults
-      });
+      for (let i = 0; i < dbResults.length; i++) {
+        console.log("aaaaaa", dbResults[i].likes);
+        if (dbResults[i].likes > 0) {
+          dbResults[i].isLiked = true;
+        } else dbResults[i].isLiked = false;
+        console.log(dbResults[i].isLiked);
+      }
+      console.log(dbResults);
+      res.render(
+        "all-books",
+        { books: dbResults }
+        //data.books: dbResults
+        //
+      );
     })
     .catch(next);
 });
@@ -52,6 +66,15 @@ router.post("/all", (req, res, next) => {
       }
     )
     .then(dbResults => {
+      for (let i = 0; i < dbResults.length; i++) {
+        console.log("aaaaaa", dbResults[i].likes);
+        if (dbResults[i].likes > 0) {
+          dbResults[i].isLiked = true;
+        } else dbResults[i].isLiked = false;
+
+        console.log(dbResults[i].isLiked);
+      }
+
       console.log(dbResults);
       res.render("all-books", {
         books: dbResults

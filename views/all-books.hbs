@@ -20,6 +20,12 @@
                 <li>Genre: {{this.category}}</li>
                 <li>State: {{this.state}}</li>
                 <li>Points: {{this.points}}</li>
+                {{#if this.isLiked}}
+                <a href="" class="like-link"><i class="fas fa-heart"></i></a>
+                {{/if}}
+                {{#unless this.isLiked}}
+                <a href="" class="notlike-link" <i class="far fa-heart"></i></a>
+                {{/unless}}
             </ul>
         </li>
         {{/each}}
@@ -36,27 +42,19 @@
                 <li>Genre: {{this.category}}</li>
                 <li>State: {{this.state}}</li>
                 <li>Points: {{this.points}}</li>
-                <a href="/auth/addBooks"><i class="fas fa-plus-square"></i></a>
+                {{#if this.isLiked}}
+                <a href="" class="like-link"><i class="fas fa-heart"></i></a>
+                {{/if}}
+                {{#unless this.isLiked}}
+                <a href="" class="notlike-link" <i class="far fa-heart"></i></a>
+                {{/unless}}
+
             </ul>
         </li>
         {{/each}}
         {{/if}}
     </ul>
-    {{#if isLoggedIn}}
-    {{#each books}}
-    <li class="books">
-        <ul class="book-items">
-            <li><img src="{{this.image}}" alt="cover of book"></li>
-            <li>Title: {{this.title}}</li>
-            <li>Authors: {{this.author}}</li>
-            <li>Genre: {{this.category}}</li>
-            <li>State: {{this.state}}</li>
-            <li>Points: {{this.points}}</li>
-            <a href="/auth/buyBook/{{this._id}}"><i class="fas fa-plus-square"></i></a>
-        </ul>
-    </li>
-    {{/each}}
-    {{/if}}
+
 </div>
 
 {{!-- {{#if isLoggedIn}} 

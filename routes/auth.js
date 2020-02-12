@@ -148,7 +148,7 @@ router.post("/signin", (req, res, next) => {
         delete clone.password; // remove password from clone
         // console.log(clone);
         req.session.currentUser = clone;
-        console.log("iciciciicic", req.session.currentUser._id) // user is now in session... until session.destroy
+        console.log("iciciciicic", req.session.currentUser._id); // user is now in session... until session.destroy
         return res.redirect("/books/all");
       } else {
         // encrypted password match failed
@@ -166,7 +166,6 @@ router.get("/logout", (req, res) => {
     res.redirect("/auth/signin");
   });
 });
-
 
 // BUY A BOOK
 
