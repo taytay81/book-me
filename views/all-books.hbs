@@ -20,12 +20,9 @@
                 <li>Genre: {{this.category}}</li>
                 <li>State: {{this.state}}</li>
                 <li>Points: {{this.points}}</li>
-                {{#if this.isLiked}}
-                <a href="" class="like-link"><i class="fas fa-heart"></i></a>
-                {{/if}}
-                {{#unless this.isLiked}}
-                <a href="" class="notlike-link" <i class="far fa-heart"></i></a>
-                {{/unless}}
+                <a href="" class="like-link" custom-book-id={{this._id}}><i class="fas fa-heart"></i></a>
+
+
             </ul>
         </li>
         {{/each}}
@@ -43,12 +40,10 @@
                 <li>Genre: {{this.category}}</li>
                 <li>State: {{this.state}}</li>
                 <li>Points: {{this.points}}</li>
-                {{#if this.isLiked}}
+
                 <a href="" class="like-link"><i class="fas fa-heart"></i></a>
-                {{/if}}
-                {{#unless this.isLiked}}
-                <a href="" class="notlike-link" <i class="far fa-heart"></i></a>
-                {{/unless}}
+
+
 
                 <a href="/auth/buyBook/{{this._id}}"><i class="fas fa-plus-square"></i></a>
             </ul>

@@ -5,10 +5,6 @@ const router = express.Router();
 /* GET all books page */
 
 router.get("/all", (req, res, next) => {
-  /*const data = {
-    js: ["addBook"],
-    books: []
-  };*/
   const titleInput = req.body.query;
   const regexptitle = new RegExp(titleInput, "gi");
   const authorInput = req.body.query;
@@ -26,20 +22,8 @@ router.get("/all", (req, res, next) => {
       ]
     })
     .then(dbResults => {
-      for (let i = 0; i < dbResults.length; i++) {
-        console.log("aaaaaa", dbResults[i].likes);
-        if (dbResults[i].likes > 0) {
-          dbResults[i].isLiked = true;
-        } else dbResults[i].isLiked = false;
-        console.log(dbResults[i].isLiked);
-      }
       console.log(dbResults);
-      res.render(
-        "all-books",
-        { books: dbResults }
-        //data.books: dbResults
-        //
-      );
+      res.render("all-books", { books: dbResults });
     })
     .catch(next);
 });
@@ -66,16 +50,6 @@ router.post("/all", (req, res, next) => {
       }
     )
     .then(dbResults => {
-      for (let i = 0; i < dbResults.length; i++) {
-        console.log("aaaaaa", dbResults[i].likes);
-        if (dbResults[i].likes > 0) {
-          dbResults[i].isLiked = true;
-        } else dbResults[i].isLiked = false;
-
-        console.log(dbResults[i].isLiked);
-      }
-
-      console.log(dbResults);
       res.render("all-books", {
         books: dbResults
       });
@@ -83,19 +57,6 @@ router.post("/all", (req, res, next) => {
     .catch(next);
 });
 
-/*router.get("/", (req, res, next) => {
-  artistModel
-    .find({ name: { $regex: req.query.q, $options: "i" } })
-    .then(dbRes => res.json(dbRes))
-    .catch(next);
-});*/
 
-//  BUY A BOOK
-
-// router.post("/add", (req, res, next) => {
-//   const
-// })
 
 module.exports = router;
-
-// {title: { $regex: req.body, $options: "i" } }
