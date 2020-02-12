@@ -8,8 +8,8 @@ class APIHandler {
     });
   }
 
-  createOneBook(newChar) {
-    return this.api.post("/index", newChar);
+  /*addALike() {
+    return this.api.post("/", );
   }
   /*
   getOneRegister(theId) {
