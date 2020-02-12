@@ -24,7 +24,7 @@ app.use(express.json());
 app.use(cookieParser());
 
 mongoose
-  .connect("mongodb://localhost/book-me", { useNewUrlParser: true })
+  .connect(process.env.MONGO_URI, { useNewUrlParser: true })
   .then(x => {
     console.log(
       `Connected to Mongo! Database name: "${x.connections[0].name}"`

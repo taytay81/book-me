@@ -15,8 +15,13 @@
         <a href="/auth/addBooks" id="addbook-id" class="link">add a book</a>
         <a href="/auth/dashboard" id="dashboard-id" class="link">access dashboard</a>
     </div>
-    <div>
-        <img class="avatar-navbar" src="/images/profileJessica.jpg" alt="profileimage">
+    <div class="dropdown">
+        <button class="dropbtn"><img class="avatar-navbar" src="/images/profileJessica.jpg" alt="profileimage"></button>
+        <div class="dropdown-content">
+            <a href="/auth/myprofile">My Profile</a>
+            <a href="/auth/addBooks">Add a book</a>
+            <a href="/auth/dashboard">My dashboard</a>
+  </div>
     </div>
     {{/if}}
     {{#unless isLoggedIn}}

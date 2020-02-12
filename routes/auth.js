@@ -3,6 +3,7 @@ const userModel = require("../models/Users");
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
+const uploadCloud = require("../config/cloudinary");
 
 //router.get("/dashboard/:id", (req, res, next) => {
 
@@ -17,7 +18,6 @@ router.get("/dashboard", (req, res, next) => {
       match: { isAvailable: false }}
     ])
     .then(dbresult => {
-      console.log(dbresult);
       res.render("dashboard", { user: dbresult, books: dbresult.books, books_bought: dbresult.books_bought});
     })
     .catch(next);
@@ -152,7 +152,6 @@ router.post("/signin", (req, res, next) => {
         delete clone.password; // remove password from clone
         // console.log(clone);
         req.session.currentUser = clone;
-        console.log("iciciciicic", req.session.currentUser._id); // user is now in session... until session.destroy
         return res.redirect("/books/all");
       } else {
         // encrypted password match failed
@@ -183,28 +182,49 @@ router.get("/buyBook/:id", (req, res, next) => {
   ])
   .then(dbRes => {
     if (dbRes[1].points >= dbRes[0].points) {
-      dbRes[1].points -= dbRes[0].points;
+      const newPoints = dbRes[1].points - dbRes[0].points;
       console.log("user has enough points");
       Promise.all([
+        userModel.findByIdAndUpdate(currentUserId, {points : newPoints}),
         bookModel.findByIdAndUpdate(currentBookId, {isAvailable : false}),
         userModel.findByIdAndUpdate(currentUserId, { $push: { books_bought: currentBookId } },
           { new: true })
       ])
       .then(added_Book => {
-      console.log("book was added and database updated");
-      console.log(dbRes);
       // res.render("dashboard", {books_bought: dbRes[0]})
       res.redirect("/auth/dashboard")
       })
     }  
       else {
-      return(
-      console.log("Unfortunately, you don't have enough points to buy this book. Add your used book to the platform to gain some points :) ")
-      )}
+        console.log("Unfortunately, you don't have enough points to buy this book. Add your used book to the platform to gain some points");
+        res.redirect("/books/all");
+      }
+      // return(
+      // console.log("Unfortunately, you don't have enough points to buy this book. Add your used book to the platform to gain some points :) ")
+      // )
   })
   .catch(next);
 });
 
+// GET MY PROFILE
+
+router.get("/myprofile", (req, res, next) => {
+  res.render("myProfile");
+});
+
+// POST MY PROFILE
+
+router.post("/myprofile", uploadCloud.single("avatar"), (req, res, next) => {
+  const user = req.body;
+  console.log("ici c'est l'avatar", user);
+  if (req.file) user.avatar = req.file.secure_url;
+  userModel
+    .create(user)
+    .then(() => {
+      res.redirect("/auth/myprofile");
+    })
+    .catch(next);
+});
 
   // Promise.all([
   //   bookModel.findByIdAndUpdate(req.params.id, {isAvailable : false}),

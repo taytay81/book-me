@@ -1,0 +1,16 @@
+{{>navBar}}
+<div class="dashboard-user-section">
+            <div class="myprofile" id="myprofile-avatar">
+                <form action="/myprofile" method="post">
+                    {{!-- <img src="{{user.avatar}}" alt="avatar" class="avatar"> --}}
+                    <label for="user-img">Avatar</label>
+                    <input id="user-img" type="file" name="user">
+                </form>
+            </div>
+            <div class="myprofile" id="myprofile-info">
+                <h2>Hello, My name is {{user.firstname}} {{user.name}}</h2>
+                <h5>leaving in {{user.city}}</h6>
+                <h6>{{user.email}}</h6>
+                <h6>{{user.points}} Points available</h6>
+            </div>
+</div>
