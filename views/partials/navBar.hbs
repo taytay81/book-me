@@ -1,29 +1,32 @@
 <nav id="nav-main" class="nav">
     <div id="logo-container">
-        <a href="/" class="logo"><img src="../../images/BookSwap-logo.png" alt="logo" srcset=""></a>
+        <a href="/" class="logo"><img class="logo" src="/images/bookswapLogo.png" alt="logo"></a>
     </div>
     <div>
         <form action="/books/all" method="post" class="form">
             <input type="text" class="input" id="search_box_navBar" name="query"
-            placeholder="Search by title or author..." onfocus=this.placeholder="">
+                placeholder="Search by title or author..." onfocus=this.placeholder="">
             <button type="submit" class="btn" id="btn_search_home"><i class="fas fa-search"></i></button>
     </div>
     </form>
     </div>
     {{#if isLoggedIn}}
     <div>
-        <a href="/auth/addBooks" class="link">add a book</a>
-        <a href="/auth/dashboard" class="link">access dashboard</a>
+        <a href="/auth/addBooks" id="addbook-id" class="link">add a book</a>
+        <a href="/auth/dashboard" id="dashboard-id" class="link">access dashboard</a>
+    </div>
+    <div>
+        <img class="avatar-navbar" src="/images/profileJessica.jpg" alt="profileimage">
     </div>
     {{/if}}
     {{#unless isLoggedIn}}
-        <a href="/auth/signin" id="nav_login" class="button-ternary flexed-item nav-end-item">
-          <span class="btn-text">Sign in</span>
-        </a>
+    <a href="/auth/signin" id="nav_login" class="button-ternary flexed-item nav-end-item">
+        <span class="btn-text">Sign in</span>
+    </a>
     {{/unless}}
     {{#if isLoggedIn}}
-        <a href="/auth/logout" id="nav_logout" class="button-ternary flexed-item nav-end-item">
-          <span class="btn-text">Log out</span>
-        </a>
+    <a href="/auth/logout" id="nav_logout" class="button-ternary flexed-item nav-end-item">
+        <span class="btn-text">Log out</span>
+    </a>
     {{/if}}
 </nav>

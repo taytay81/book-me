@@ -1,10 +1,10 @@
-#nav-main{
-    background-color: red;
-    height: 10vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
+#nav-main {
+  background-color: #1d4d4f;
+  height: 10vh;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 }
 
 #nav-main #logo-container {
@@ -19,39 +19,61 @@
 
 
 #search_box_navBar {
-    width: 40vh;
-    height: 5vh;
-    border-radius: 8px;
+  width: 40vh;
+  height: 5vh;
+  border-radius: 8px;
 }
 
 .form input {
-    padding-left: 1vh;
-    font-size: 2vh;
+  padding-left: 1vh;
+  font-size: 2vh;
 }
 
 button i {
-    transition: transform .25s;
+  transition: transform 0.25s;
 }
 
-button:hover > i{
-    transform:scale(1.2);
+button:hover > i {
+  transform: scale(1.2);
 }
 
 button:focus {
-    outline: none;
+  outline: none;
 }
 
 #btn_search_home {
-    position: relative;
-    padding: 16px;
-	background: transparent;
-	border: none;
-    cursor: pointer;     
+  position: relative;
+  padding: 16px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
 }
 
 #btn_search_home i {
-    font-size: 2vh;
-    position: absolute;
-    right: 4.5vh;
-    top: 0.2vh;
+  font-size: 2vh;
+  position: absolute;
+  right: 5vh;
+  top: 0.2vh;
+}
+.avatar-navbar {
+  vertical-align: middle;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+a {
+  color: #6ba8a9;
+  font-size: 14px;
+  font-weight: bold;
+  text-decoration: none;
+}
+#nav_logout {
+  margin-right: 1vw;
+}
+#nav_login {
+  margin-right: 1vw;
+}
+.logo {
+  width: 10vh;
+  max-height: 100%;
 }
