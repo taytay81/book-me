@@ -8,8 +8,8 @@
     <ul class="list-books">
         {{#unless isLoggedIn}}
         {{#each books}}
-        <li class="books">
-            <ul class="book-items">
+        <li class="allbooks-list-book">
+            <ul class="allbooks-book-items">
                 <li>
                     <a href="/auth/printBookDetailled/{{this._id}}">
                         <img src="{{this.image}}" alt="cover of book">
@@ -30,10 +30,11 @@
         </li>
         {{/each}}
         {{/unless}}
+
         {{#if isLoggedIn}}
         {{#each books}}
-        <li class="books">
-            <ul class="book-items">
+        <li class="allbooks-list-book">
+            <ul class="allbooks-book-items">
                 <a href="/auth/printBookDetailled/{{this._id}}">
                     <img src="{{this.image}}" alt="cover of book">
                 </a>
@@ -49,6 +50,7 @@
                 <a href="" class="notlike-link" <i class="far fa-heart"></i></a>
                 {{/unless}}
 
+                <a href="/auth/buyBook/{{this._id}}"><i class="fas fa-plus-square"></i></a>
             </ul>
         </li>
         {{/each}}
