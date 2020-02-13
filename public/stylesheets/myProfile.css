@@ -9,11 +9,13 @@
 .dashboard-user-section {
     display: flex;
     flex-direction: row;
-    margin-top: 5vh;
-    width: 100%;
+    width: 90%;
     height: 90%;
     justify-content: space-evenly;
     align-items: flex-start;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    margin: 5vh 10vh 0 10vh;
 }
 
 #avatar-section {
@@ -23,6 +25,7 @@
 
 
 #avatar_pic img {
+    margin-top: 2vh;
     display: flex;
     flex-direction: column;
     max-width: 100%;
@@ -35,9 +38,11 @@
     display: flex;
     align-items: center;
     flex-direction: column;
+    
 }
 
-/* #myprofile-info h3 {
-    font-size: 4vh;
-} */
+#myprofile-info h3 {
+    font-size: 2vh;
+    padding: 1.7vh;
+}
 

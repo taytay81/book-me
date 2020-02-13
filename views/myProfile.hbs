@@ -3,21 +3,20 @@
 <h3 id="myprofile-title">My personal information</h3>
 <div class="dashboard-user-section">
                 <div id="avatar_section">
-                <form action="/auth/myprofile" method="post" enctype="multipart/form-data">
-                    {{!-- <img src="{{user.avatar}}" alt="avatar" class="avatar"> --}}
+                {{!-- <form action="/auth/myprofile" method="post" enctype="multipart/form-data">
                     <label for="user-img">Upload your profile picture</label>
                     <input id="user-img" type="file" name="avatar">
                     <button type="submit">Submit</button>
-                </form>
+                </form> --}}
                 <div id="avatar_pic">
                     <img src="{{user.avatar}}" alt="">
                 </div>
                 </div>
                 <div class="myprofile" id="myprofile-info">
-                    <h3>First name:{{user.firstname}}</h3>
-                    <h3>Last name:{{user.name}}</h3>
-                    <h3>Email:{{user.email}}</h3>
-                    <h3>You have {{user.points}} points available</h3>
+                    <h3>First name: {{user.firstname}}</h3>
+                    <h3>Last name: {{user.name}}</h3>
+                    <h3>Email: {{user.email}}</h3>
+                    <h3>You have {{user.points}} points available to get some new books</h3>
                 </div>
 
 </div>

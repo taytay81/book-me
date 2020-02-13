@@ -1,24 +1,24 @@
 {{>navBar}}
-<div id="container-all-books">
+<div class="container-all-books">
     <h1>All books</h1>
     {{#unless books}}
     <p>No books found.</p>
     {{/unless}}
 
-    <ul class="list-books">
+    <ul class="container-all-books">
         {{#unless isLoggedIn}}
         {{#each books}}
-        <li class="allbooks-list-book">
+         <div class="dashboard-list-books">
            {{>bookitem}}
-        </li>
+        </div>
         {{/each}}
         {{/unless}}
 
         {{#if isLoggedIn}}
         {{#each books}}
-        <li class="allbooks-list-book">
+        <div class="dashboard-list-books">
             {{>bookitemloggedin}}
-        </li>
+        </div>
         {{/each}}
         {{/if}}
     </ul>
