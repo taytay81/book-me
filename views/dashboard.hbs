@@ -18,7 +18,7 @@
             <div class="dashboard-container-all-books">
 
                 {{#each books}}
-                <ul class="dashboard-list-books">
+                <div class="dashboard-list-books">
 
                     {{>bookitem}}
 
@@ -27,7 +27,7 @@
                     <a href="/auth/editBook/{{this._id}}" class="fa fa-edit table-icon" data-id-book="{{this._id}}"
                         aria-hidden="true"></a>
 
-                </ul>
+                </div>
                 {{/each}}
 
             </div>
@@ -38,11 +38,11 @@
             <div class="dashboard-container-all-books">
 
                 {{#each books_bought}}
-                <ul class="dashboard-list-books">
+                <div class="dashboard-list-books">
 
                     {{>bookitem}}
 
-                </ul>
+                </div>
                 {{/each}}
 
             </div>

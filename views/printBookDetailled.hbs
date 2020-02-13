@@ -1,8 +1,6 @@
 {{>navBar}}
 <div id="container-book-detailled">
-  <h1>book detailled </h1>
-
-
+  <h1>All details</h1>
   <ul class="list-books">
     <li class="books">
       <ul class="book-items">
@@ -18,7 +16,9 @@
         <li>Pages Number: {{book.pageCount}}</li>
         <li>Language: {{book.language}}</li>
         <li>State: {{book.state}}</li>
+        <li>Points: {{book.points}}</li>
         <li>Likes: {{book.likes}}</li>
+        <a href="" class="like-link" custom-book-id={{this._id}}><i class="fas fa-heart"></i></a>
         <a href="/auth/addBooks"><i class="fas fa-plus-square"></i></a>
       </ul>
     </li>

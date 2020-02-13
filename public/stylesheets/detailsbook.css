@@ -1,0 +1,30 @@
+#container-book-detailled {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#container-book-detailled h1 {
+    margin: 2vh 0;
+    color: #357376;
+}
+
+#container-book-detailled .books .book-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 4vh;
+}
+
+#container-book-detailled .books .book-items li {
+    padding: 0.7vh 0;
+}
+
+#container-book-detailled .books .book-items a {
+    margin: 0.8vh 0;
+}
+
+#container-book-detailled .books .book-items a:hover {
+    color: #ecce6d;
+}

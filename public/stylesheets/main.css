@@ -7,6 +7,7 @@
 @import "./form.css";
 @import "./myProfile.css";
 @import "./bookitem.css";
+@import "./detailsbook.css";
 
 * {
   padding: 0;
