@@ -1,5 +1,5 @@
 {{>navBar}}
-<form action="auth/user/edit">
+{{!-- <form action="auth/user/edit">
     <form action="">
         <div class="dashboard-user-section">
             <img src="{{user.avatar}}" alt="avatar" class="avatar">
@@ -10,12 +10,12 @@
         </div>
         <hr>
     </form>
-</form>
+</form> --}}
 
     <div class="dashboard-books-section">
-        <div class="dashboard-book-to-sell-section">
+        <div class="dashboard-books-container" id="dashboard-book-to-sell-section">
             <h3>My personal Books I want to Exchange</h3>
-            <div id="dashboard-container-all-books">
+            <div class="dashboard-container-all-books">
 
                 {{#each books}}
                 <ul class="dashboard-list-books">
@@ -33,9 +33,9 @@
             </div>
         </div>
         <hr>
-        <div class="dasboard-favorite-books-section">
+        <div class="dashboard-books-container" id="dasboard-favorite-books-section">
             <h3>Books I purchased</h3>
-            <div id="dashboard-container-all-books">
+            <div class="dashboard-container-all-books">
 
                 {{#each books_bought}}
                 <ul class="dashboard-list-books">

@@ -1,16 +1,21 @@
 {{>navBar}}
 <div class="dashboard-user-section">
-            <div class="myprofile" id="myprofile-avatar">
+                <h4>Avatar</h4>
                 <form action="/auth/myprofile" method="post" enctype="multipart/form-data">
                     {{!-- <img src="{{user.avatar}}" alt="avatar" class="avatar"> --}}
-                    <label for="user-img">Avatar</label>
+                    <label for="user-img">Upload your profile picture</label>
                     <input id="user-img" type="file" name="avatar">
-                    <button type="submit">submit image</button>
+                    <button type="submit">Submit</button>
                 </form>
-                <img src="{{user.avatar}}" alt="">
-            </div>
+                <div id="profile_pic">
+                    <img src="{{user.avatar}}" alt="">
+                </div>
             <div class="myprofile" id="myprofile-info">
-                    <h2>Hi there, {{user.firstname}} {{user.name}}</h2>
+                <form action="post"></form>
+                    <h3>First name:{{user.firstname}}</h3>
+                    <h3>Last name:{{user.name}}</h3>
+                    <h3>Email:{{user.email}}</h3>
                     <h3>You have {{user.points}} points available</h3>
             </div>
+
 </div>

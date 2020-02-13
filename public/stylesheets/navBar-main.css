@@ -62,7 +62,7 @@ button:focus {
   border-radius: 50%;
 }
 a {
-  color: #6ba8a9;
+  color: #1d4d4f;
   font-size: 14px;
   font-weight: bold;
   text-decoration: none;
@@ -72,7 +72,19 @@ a {
 }
 #nav_login {
   margin-right: 1vw;
+  background-color: #ecce6d;
+  padding: 1vh 3vh;
+  border-radius: 8px;
 }
+
+#nav_login:hover {
+  background-color: #FFC100;
+}
+
+#nav_login span {
+  font-size: 2vh;
+}
+
 .logo {
   width: 10vh;
   max-height: 100%;
@@ -83,7 +95,9 @@ a {
 .dropdown {
   position: relative;
   display: inline-block;
+  left: 0;
   margin: 2vh;
+  text-align: right;
 }
 
 .dropdown-content {
@@ -96,7 +110,7 @@ a {
 }
 
 .dropdown-content a {
-  color: black;
+  color: #ecce6d;
   padding: 12px 16px;
   text-decoration: none;
   display: block;
@@ -110,6 +124,12 @@ a {
   /* padding: 1vh 0; */
   display: block;
   background-color: #6ba8a9;
+  right: 0;
+}
+
+.dropdown:hover .dropdown-content a {
+  width: 20vh;
+  font-size: 1.7vh;
 }
 
 .dropdown:hover .dropbtn {

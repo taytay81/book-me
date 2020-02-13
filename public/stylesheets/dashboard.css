@@ -1,28 +1,40 @@
-.avatar {
+/* .avatar {
   vertical-align: middle;
   width: 100px;
   height: 100px;
   border-radius: 50%;
+} */
+
+.dashboard-books-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
 }
-#dashboard-container-all-books {
-  margin: 5vh;
+
+.dashboard-books-container h3 {
+  margin-top: 5vh;
+  color: #357376;
+  font-size: 3vh;
+  text-align: center;
 }
 
 .dashboard-container-all-books {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    border: solid 3px #1d4d4f;
-    border-radius: 8px;
-    padding: 1vh;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    transition: 0.3s;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  margin: 5vh;
 }
+
+.dashboard-list-books {
+  padding: 2vh;
+}
+
 
 .dashboard-list-books li {
   display: block;
   text-align: left;
 }
+
 .dashboard-list-books p {
   font-weight: bold;
   text-align: left;
