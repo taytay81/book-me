@@ -70,7 +70,7 @@ function printHtmlBook(data) {
 
     const language = document.getElementById("language_id");
 
-    title.value = `"${mybook.volumeInfo.title}"`;
+    title.value = mybook.volumeInfo.title;
     title.style.width = mybook.volumeInfo.title.length + "ch";
 
     isbn.value = mybook.volumeInfo.industryIdentifiers[0].identifier;

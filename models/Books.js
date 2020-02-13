@@ -17,7 +17,7 @@ const bookSchema = new Schema({
     type: String,
     enum: ["as new", "very good", "good", "acceptable", ""]
   },
-  points: String,
+  points: { type: Number, default: 0 },
   isAvailable: { type: Boolean, default: true },
   likes: { type: Number, default: 0 }
 });

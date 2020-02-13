@@ -4,13 +4,12 @@ const router = express.Router();
 
 /* GET home page */
 router.get("/", (req, res, next) => {
-  console.log("dans le get ");
   bookModel
     .find()
     .sort({ likes: -1 })
     .limit(5)
     .then(books => {
-      res.render("index", { books });
+      res.render("index", { books: books, js: "slideShow" });
     })
     .catch(next);
 });

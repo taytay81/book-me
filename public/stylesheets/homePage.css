@@ -6,24 +6,70 @@
 
 #book-homepage {
   max-width: 100%;
-  height: 70vh;
+  height: 60vh;
 }
 
 h1 {
   text-align: center;
 }
 
-#favorite-list {
+#slideshow {
   display: flex;
-  flex-direction: row;
-  justify-content: space-evenly;
+  flex-wrap: wrap;
+}
+.w3-content {
+  width: 96%;
+  display: flex;
+  flex-wrap: wrap;
 }
 
-#favorite-list li {
-  margin: 4vh;
-  list-style: none;
-  width: 40vh;
-  height: 60vh;
-  border: solid 1px black;
-  border-radius: 8px;
+#arrow-right-id {
+  display: flex;
+  width: 2%;
+  align-items: center;
+}
+#arrow-left-id {
+  display: flex;
+  width: 2%;
+  align-items: center;
+}
+#arrow-right-id i {
+  font-size: 30px;
+  text-align: center;
+}
+#arrow-left-id i {
+  font-size: 30px;
+  text-align: center;
+}
+
+.book {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  text-align: center;
+  border-width: 0px 5px;
+  box-shadow: 10px 5px 5px #e5dfdf;
+  margin: 5px;
+  border-radius: 12px;
+}
+.book-title-class {
+  font-weight: bold;
+  color: grey;
+  font-size: 16px;
+}
+.book-author-class {
+  color: black;
+  font-size: 16px;
+  font-weight: bold;
+}
+.book-points-class {
+  color: #1d4d4f;
+  font-weight: bold;
+}
+.book-image {
+  margin-bottom: 10px;
+}
+.book-content {
+  margin-bottom: 10px;
 }
