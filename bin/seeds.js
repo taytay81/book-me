@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+/*const mongoose = require("mongoose");
 const booksModel = require("./../models/Books");
 
 const book1 = [
@@ -27,12 +27,11 @@ const book1 = [
 
     booksModel.insertMany(book1)
   .then(dbSuccess => {
-      console.log("hello")
-      console.log("movies inserted successfully", dbSuccess);
+      
   })
   .catch(dbErr => {
       console.log("Oh no", dbErr);
   });
 
 
-    module.exports = book1;
+    module.exports = book1;*/

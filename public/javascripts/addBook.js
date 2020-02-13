@@ -8,7 +8,6 @@ let searchBooks = document.getElementById("search_box");
 let btnsearch = document.getElementById("btn_search");
 
 const getBooks = async isbn => {
-  console.log("entering the get books function");
   var url;
   if (isbn.length >= 10) {
     if (isbn.length == 13) {
@@ -17,7 +16,6 @@ const getBooks = async isbn => {
       url = `https://www.googleapis.com/books/v1/volumes?q=ISBN_10:${isbn}&key=${API_KEY}`;
     const response = await fetch(url);
     const data = await response.json();
-    console.log("the data", data);
     printHtmlBook(data);
 
     //return data
@@ -41,7 +39,6 @@ function calculatePoints(price, page_count, state) {
   const maxprice = 10;
   const maxpage = 10;
   finalPoints = finalPoints + (price / 5 + page_count / 10);
-  console.log("xxxxxx", finalPoints);
   if (state == "likenew") {
     finalPoints = finalPoints + 30;
   } else if (state == "verygood") {
@@ -122,15 +119,12 @@ function printHtmlBook(data) {
 }
 
 window.addEventListener("load", () => {
-  console.log("IronGenerator JS imported successfully!");
-  console.log("super on est ici ");
   event.preventDefault();
 
   document
     .getElementById("btn_search")
     .addEventListener("click", function(event) {
       event.preventDefault();
-      console.log("salut");
       var test = getBooks(searchBooks.value);
     });
 
@@ -138,7 +132,6 @@ window.addEventListener("load", () => {
     .getElementById("state_id")
     .addEventListener("change", function(event) {
       event.preventDefault();
-      console.log("hey clicked on the dropdownlist");
       const price = document.getElementById("price_id").value;
       const page_count = document.getElementById("page_count_id").value;
       const state = document.getElementById("state_id").value;
