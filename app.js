@@ -68,7 +68,7 @@ app.use(
     cookie: { maxAge: 600000 }, // in millisec
     store: new MongoStore({
       mongooseConnection: mongoose.connection,
-      ttl: 24 * 60 * 60 // 1 day
+      ttl: 30 * 60 * 1000 // 1 day
     }),
     saveUninitialized: true,
     resave: true

@@ -5,6 +5,7 @@
 @import "./homePage.css";
 @import "./signup-login.css";
 @import "./form.css";
+@import "./myProfile.css";
 
 * {
   padding: 0;

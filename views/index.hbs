@@ -1,25 +1,25 @@
 {{>navBar}}
 <div id="pic-container">
-    <img id="book-homepage" src="/images/coverHomepage.jpg" alt="book">
+    <img id="book-homepage" src="/images/coverHomepageTest.jpg" alt="book">
 </div>
 <h1>Top 5 books</h1>
 <div id="favorite-container">
-    
-        {{#each books}}
-        <li class="allbooks-list-book">
-            <ul class="allbooks-book-items">
-                <li>
-                    <a href="/auth/printBookDetailled/{{this._id}}">
-                        <img src="{{this.image}}" alt="cover of book">
-                    </a>
-                </li>
-                <li>Title: {{this.title}}</li>
-                <li>Authors: {{this.author}}</li>
-                <li>Genre: {{this.category}}</li>
-                <li>State: {{this.state}}</li>
-                <li>Points: {{this.points}}</li>
-                <a href="" class="like-link" custom-book-id={{this._id}}><i class="fas fa-heart"></i></a>
-            </ul>
-        </li>
-        {{/each}}
+
+    {{#each books}}
+    <li class="allbooks-list-book">
+        <ul class="allbooks-book-items">
+            <li>
+                <a href="/auth/printBookDetailled/{{this._id}}">
+                    <img src="{{this.image}}" alt="cover of book">
+                </a>
+            </li>
+            <li>Title: {{this.title}}</li>
+            <li>Authors: {{this.author}}</li>
+            <li>Genre: {{this.category}}</li>
+            <li>State: {{this.state}}</li>
+            <li>Points: {{this.points}}</li>
+            <a href="" class="like-link" custom-book-id={{this._id}}><i class="fas fa-heart"></i></a>
+        </ul>
+    </li>
+    {{/each}}
 </div>

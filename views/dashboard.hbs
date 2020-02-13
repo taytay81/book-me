@@ -54,7 +54,7 @@
         </div>
         <hr>
         <div class="dasboard-favorite-books-section">
-            <h3>Books I want to Purchase</h3>
+            <h3>Books I purchased</h3>
             <div id="dashboard-container-all-books">
 
                 {{#each books_bought}}
@@ -81,11 +81,6 @@
                     <li>
                         <p>Points value:</p> {{this.points}} pts
                     </li>
-
-                    <a href="/auth/deleteBook/{{this._id}}" class="fa fa-trash table-icon" data-id-book="{{this._id}}"
-                        aria-hidden="true"></a>
-                    <a href="/auth/editBook/{{this._id}}" class="fa fa-edit table-icon" data-id-book="{{this._id}}"
-                        aria-hidden="true"></a>
 
                 </ul>
                 {{/each}}

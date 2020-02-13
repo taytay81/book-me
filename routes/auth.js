@@ -3,6 +3,7 @@ const userModel = require("../models/users");
 const express = require("express");
 const router = express.Router();
 const bcrypt = require("bcryptjs");
+const uploadCloud = require("../config/cloudinary");
 
 //router.get("/dashboard/:id", (req, res, next) => {
 
@@ -63,7 +64,6 @@ router.get("/printBookDetailled/:id", (req, res, next) => {
   bookModel
     .findById(req.params.id)
     .then(book => {
-      
       res.render("printBookDetailled", { book });
     })
     .catch(next);
@@ -179,9 +179,10 @@ router.get("/buyBook/:id", (req, res, next) => {
   ])
     .then(dbRes => {
       if (dbRes[1].points >= dbRes[0].points) {
-        dbRes[1].points -= dbRes[0].points;
+        const newPoints = dbRes[1].points - dbRes[0].points;
         console.log("user has enough points");
         Promise.all([
+          userModel.findByIdAndUpdate(currentUserId, { points: newPoints }),
           bookModel.findByIdAndUpdate(currentBookId, { isAvailable: false }),
           userModel.findByIdAndUpdate(
             currentUserId,
@@ -189,17 +190,41 @@ router.get("/buyBook/:id", (req, res, next) => {
             { new: true }
           )
         ]).then(added_Book => {
+          // res.render("dashboard", {books_bought: dbRes[0]})
           res.redirect("/auth/dashboard");
         });
       } else {
-        return console.log(
-          "Unfortunately, you don't have enough points to buy this book. Add your used book to the platform to gain some points :) "
+        console.log(
+          "Unfortunately, you don't have enough points to buy this book. Add your used book to the platform to gain some points"
         );
+        res.redirect("/books/all");
       }
+      // return(
+      // console.log("Unfortunately, you don't have enough points to buy this book. Add your used book to the platform to gain some points :) ")
+      // )
     })
     .catch(next);
 });
 
+// GET MY PROFILE
 
+router.get("/myprofile", (req, res, next) => {
+  res.render("myProfile");
+});
+
+// POST MY PROFILE
+
+router.post("/myprofile", uploadCloud.single("avatar"), (req, res, next) => {
+  const user = req.session.currentUser;
+  let avatar;
+  if (req.file) avatar = req.file.secure_url;
+  console.log(req.file);
+  userModel
+    .findByIdAndUpdate(user._id, { avatar: avatar }, { new: true })
+    .then(() => {
+      res.redirect("/auth/myprofile");
+    })
+    .catch(next);
+});
 
 module.exports = router;
