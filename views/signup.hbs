@@ -1,3 +1,4 @@
+{{>navBar}}
 <section class="sign form-container">
   <header class="form-header">
     <h1 class="form-title">Sign up</h1>
@@ -7,6 +8,11 @@
   <p class="message {{msg.status}}">{{msg.text}}</p>
   {{/if}}
   <form method="post" action="/auth/signup" id="form_user">
+    {{!-- <div>
+    <label for="user-img">Upload your profile picture</label>
+    <input id="user-img" type="file" name="avatar">
+    <button type="submit">Submit</button>
+    </div> --}}
     <div class="form-item-wrapper flexed-item">
       <label for="firstname" class="label-ref label">First Name</label>
       <input id="firstname" type="text" class="input-text input" placeholder="Albert" required value="yo"
