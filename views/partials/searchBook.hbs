@@ -1,22 +1,21 @@
 <form class="form" id="search_book">
     <div class="row">
-        <nav class="nav-isbn">
+        <div class="nav-isbn">
             <div class="section1-isbn">
-                <h2>ISBN Search </h2>
-                <input id="search_box" type="text" class="input" value="2205049658"
-                    placeholder="enter Isbn number without dash">
-                <button class="btn" id="btn_search">Search for book</button>
+                <h2 id="title-search-add-book">Search for a book in the Google API </h2>
+                <input id="search_box" type="text" class="input" placeholder="Enter ISBN..." value="9781595823939">
+                <button class="btn" id="btn_search"><i class="fas fa-search"></i></button>
             </div>
-        </nav>
-        <div class="section2-isbn">
-            <p>Using an ISBN is the most accurate and reliable way to search for a book. Use our search engine to find
-                book
-                information , the typical location for Isbn is on the back of a book </p>
-            <div class="img-container-isbn">
-                <img src="/images/isbn.png" alt="isbn image">
+            <div class="section2-isbn">
+                <p id="txt-isbn"> Use our search engine
+                    to find
+                    book
+                    information , the typical location for Isbn is on the back of a book </p>
+                <div class="img-container-isbn">
+                    <img src="/images/isbn.png" alt="isbn image">
+                </div>
             </div>
         </div>
+        <div id="messageFromApi"></div>
     </div>
-    <div id="messageFromApi"></div>
 </form>
-<hr>

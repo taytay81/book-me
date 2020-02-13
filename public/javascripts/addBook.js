@@ -1,7 +1,3 @@
-//require("dotenv").config();
-//import APIHandler from "./APIHandler.js";
-//const myBookAPI = new APIHandler("http://localhost:3000");
-
 const API_KEY = "AIzaSyAmkiU-t8tGWmTQhcI-FS4noSZZ2g-v-sI";
 let bookContainer = document.getElementById("search_results");
 let searchBooks = document.getElementById("search_box");
@@ -36,12 +32,11 @@ function retrieveTheBestBook(data) {
 }
 function calculatePoints(price, page_count, state) {
   var finalPoints = 10;
-  const maxprice = 10;
-  const maxpage = 10;
   finalPoints = finalPoints + (price / 5 + page_count / 10);
-  if (state == "likenew") {
+  console.log(state);
+  if (state == "as new") {
     finalPoints = finalPoints + 30;
-  } else if (state == "verygood") {
+  } else if (state == "very good") {
     finalPoints = finalPoints + 21;
   } else if (state == "good") {
     finalPoints = finalPoints + 9;
@@ -56,6 +51,8 @@ function printHtmlPoints(points) {
 //function that get the result of the googleapi and prin it inside the form
 function printHtmlBook(data) {
   if (data.totalItems > 0) {
+    const myform = document.getElementById("form-book");
+    myform.style.visibility = "visible";
     const mybook = retrieveTheBestBook(data);
     const isbn = document.getElementById("isbn_id");
     const title = document.getElementById("title_id");
@@ -95,7 +92,7 @@ function printHtmlBook(data) {
     price.style.width = price.value.length + 2 + "ch";
 
     description.value = mybook.volumeInfo.description;
-    description.style.width = description.value.length + "ch";
+    //description.style.width = description.value.length + "ch";
     if (mybook.volumeInfo.authors.length > 1) {
       const authorsSection = document.getElementById("authors_section");
       var authorsInnerhtml = `<label for="">Authors</label>`;
@@ -111,6 +108,8 @@ function printHtmlBook(data) {
     publisher.value = mybook.volumeInfo.publisher;
     publisher.style.width = publisher.value.length + 1 + "ch";
   } else {
+    const myform = document.getElementById("form-book");
+    myform.style.visibility = "hidden";
     const message = document.getElementById("messageFromApi");
     message.innerHTML =
       "The Isbn has not been found , try with another one or enter manually the data";
@@ -120,6 +119,8 @@ function printHtmlBook(data) {
 
 window.addEventListener("load", () => {
   event.preventDefault();
+  const myform = document.getElementById("form-book");
+  myform.style.visibility = "hidden";
 
   document
     .getElementById("btn_search")

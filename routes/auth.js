@@ -26,9 +26,6 @@ router.get("/dashboard", (req, res, next) => {
 });
 
 router.post("/addBooks", (req, res, next) => {
-  const data = {
-    js: ["dashboard"]
-  };
   const book = req.body;
   bookModel
     .create(book)
@@ -46,10 +43,7 @@ router.post("/addBooks", (req, res, next) => {
     .catch(next);
 });
 router.get("/addBooks", (req, res, next) => {
-  const data = {
-    js: ["addBook"]
-  };
-  res.render("addBook", data);
+  res.render("addBook", { js: "addBook" });
 });
 
 router.post("/editBook/:id", (req, res, next) => {
