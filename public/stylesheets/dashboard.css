@@ -26,13 +26,30 @@
 }
 
 .dashboard-list-books {
-  padding: 2vh;
+  /* padding: 2vh; */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 30%;
+  text-align: center;
+  border-width: 0px 5px;
+  box-shadow: 10px 5px 5px #e5dfdf;
+  margin: 0.5vh;
+  border-radius: 12px;
 }
 
+.dashboard-list-books a {
+  margin: 0.5vh;
+  font-size: 1.7vh;
+}
+
+.dashboard-list-books a:hover {
+  color: #ecce6d;
+}
 
 .dashboard-list-books li {
   display: block;
-  text-align: left;
+  /* text-align: left; */
 }
 
 .dashboard-list-books p {
