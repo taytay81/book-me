@@ -2,14 +2,18 @@
     <div id="logo-container">
         <a href="/" class="logo"><img class="logo" src="/images/bookswapLogo.PNG" alt="logo"></a>
     </div>
+    <div id="info-link-contain">
+        <a id="info-link" href="/infos">how it works ?</a>
+    </div>
     <div>
         <form action="/books/all" method="post" class="form">
             <input type="text" class="input" id="search_box_navBar" name="query"
-                placeholder="Search by title or author..." onfocus=this.placeholder="">
+                placeholder="Search a book by title or author..." onfocus=this.placeholder="">
             <button type="submit" class="btn" id="btn_search_home"><i class="fas fa-search"></i></button>
     </div>
     </form>
     </div>
+
     {{#if isLoggedIn}}
     <div class="dropdown">
         <button class="dropbtn"><img class="avatar-navbar" src="/images/profileJessica.jpg" alt="profileimage"></button>
@@ -18,7 +22,7 @@
             <a href="/auth/addBooks">Add a book</a>
             <a href="/auth/dashboard">My dashboard</a>
             <a href="/auth/logout">Log out</a>
-  </div>
+        </div>
     </div>
     {{/if}}
     {{#unless isLoggedIn}}
@@ -26,5 +30,5 @@
         <span class="btn-text">Sign in</span>
     </a>
     {{/unless}}
-    
+
 </nav>

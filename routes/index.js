@@ -13,6 +13,9 @@ router.get("/", (req, res, next) => {
     })
     .catch(next);
 });
+router.get("/infos", (req, res, next) => {
+  res.render("infos");
+});
 
 router.get("/getLikes/:id", (req, res, next) => {
   bookModel

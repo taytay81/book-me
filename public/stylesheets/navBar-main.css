@@ -8,20 +8,21 @@
 }
 
 #nav-main #logo-container {
-    height: 10vh;
-    width: 10vh;
+  height: 10vh;
+  width: 10vh;
 }
 
 #nav-main #logo-container a img {
-    height: 10vh;
-    width: 10vh;
+  height: 10vh;
+  width: 10vh;
 }
 
-
 #search_box_navBar {
-  width: 40vh;
+  width: 50vh;
   height: 5vh;
   border-radius: 8px;
+  margin-left: -25vw;
+  border-bottom: 3px solid black;
 }
 
 .form input {
@@ -78,7 +79,7 @@ a {
 }
 
 #nav_login:hover {
-  background-color: #FFC100;
+  background-color: #ffc100;
 }
 
 #nav_login span {
@@ -105,7 +106,7 @@ a {
   position: absolute;
   background-color: #f1f1f1;
   min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
   z-index: 1;
 }
 
@@ -147,4 +148,18 @@ a {
 
 .dropdown-content > a {
   color: #1d4d4f;
+}
+#info-link-contain {
+  margin-right: 5vw;
+}
+#info-link-contain a {
+  color: #e5dfdf;
+  margin-left: -20vw;
+  border-bottom: 3px solid transparent;
+}
+#info-link-contain a:hover {
+  border-bottom: 3px solid #357376;
+}
+#info-link-contain a.active {
+  border-bottom: 3px solid #357376;
 }

@@ -8,6 +8,7 @@
 @import "./myProfile.css";
 @import "./bookitem.css";
 @import "./detailsbook.css";
+@import "./info.css";
 
 * {
   padding: 0;
@@ -27,5 +28,4 @@ li {
 }
 .fas {
   font-size: 20px;
-  
 }

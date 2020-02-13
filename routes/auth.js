@@ -19,8 +19,7 @@ router.get("/dashboard", (req, res, next) => {
       res.render("dashboard", {
         user: dbresult,
         books: dbresult.books,
-        books_bought: dbresult.books_bought,
-        js: "addBook"
+        books_bought: dbresult.books_bought
       });
     })
     .catch(next);
