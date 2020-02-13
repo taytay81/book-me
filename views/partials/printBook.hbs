@@ -1,72 +1,68 @@
-<h2>please chek the values and add the book to your dashboard</h2>
-
 <form action="/auth/addBooks" method="post">
-    <div>
-        <img id="img_id" src="" alt="">
-        <input id="image_value_id" type="hidden" name="image">
+    <div id="form-book">
+        <h2>please chek the values and add the book to your dashboard</h2>
+        <div>
+            <img id="img_id" src="" alt="">
+            <input id="image_value_id" type="hidden" name="image">
+        </div>
+        <div>
+            <label for="">ISBN</label>
+            <input id="isbn_id" type="text" name="isbn">
+        </div>
+        <div>
+            <label for="">Title</label>
+            <input id="title_id" type="text" name="title">
+        </div>
+        <div id="authors_section">
+            <label for="">Authors</label>
+            <input id="author_id" type="text" name="author">
+        </div id="publishers_section">
+        <div>
+            <label for="">Publishers</label>
+            <input id="publisher_id" type="text" name="publisher">
+        </div>
+        <div>
+
+            <label for="">Price</label>
+            <input id="price_id" type="text" name="price">
+        </div>
+        <div>
+            <label for="">Description</label>
+            <textarea id="description_id" name="description"></textarea>
+
+        </div>
+        <div>
+            <label for="">language</label>
+            <input id="language_id" type="text" name="language">
+        </div>
+        <div>
+            <label for="">Category</label>
+            <input id="category_id" type="text" name="category">
+        </div>
+        <div>
+            <label for="">Published date</label>
+            <input id="published_date_id" type="text" name="publishedDate">
+        </div>
+        <div>
+            <label for="">Pages:</label>
+            <input id="page_count_id" type="text" name="pageCount">
+        </div>
+        <div>
+            <label for="">Choose a State: </label>
+            <select name="state" id="state_id">
+                <option value="">--Please choose an option--</option>
+                <option value="as new">As New</option>
+                <option value="very good">Very Good</option>
+                <option value="good">Good</option>
+                <option value="acceptable">Acceptable</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="">Points to Earn </label>
+            <input id="points_id" type="text" name="points">
+        </div>
+
+        <button>Add to my library</button>
     </div>
-    <div>
-        <label for="">ISBN</label>
-        <input id="isbn_id" type="text" name="isbn">
-    </div>
-    <div>
-        <label for="">Title</label>
-        <input id="title_id" type="text" name="title">
-    </div>
-    <div id="authors_section">
-        <label for="">Authors</label>
-        <input id="author_id" type="text" name="author">
-    </div id="publishers_section">
-    <div>
-        <label for="">Publishers</label>
-        <input id="publisher_id" type="text" name="publisher">
-    </div>
-    <div>
-
-        <label for="">Price</label>
-        <input id="price_id" type="text" name="price">
-    </div>
-    <div>
-        <label for="">Description</label>
-        <textarea id="description_id" name="description"></textarea>
-
-    </div>
-    <div>
-        <label for="">language</label>
-        <input id="language_id" type="text" name="language">
-    </div>
-    <div>
-        <label for="">Category</label>
-        <input id="category_id" type="text" name="category">
-    </div>
-    <div><label for="">Published date</label>
-        <input id="published_date_id" type="text" name="publishedDate"></div>
-    <div><label for="">Pages:</label>
-        <input id="page_count_id" type="text" name="pageCount"></div>
-    <div><label for="">Choose a State: </label>
-        <select name="state" id="state_id">
-            <option value="">--Please choose an option--</option>
-            <option value="as new">As New</option>
-            <option value="very good">Very Good</option>
-            <option value="good">Good</option>
-            <option value="acceptable">Acceptable</option>
-        </select>
-    </div>
-
-    <div><label for="">Points to Earn </label>
-        <input id="points_id" type="text" name="points"></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <button>Add to my library</button>
 </form>

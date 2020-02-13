@@ -56,6 +56,8 @@ function printHtmlPoints(points) {
 //function that get the result of the googleapi and prin it inside the form
 function printHtmlBook(data) {
   if (data.totalItems > 0) {
+    const myform = document.getElementById("form-book");
+    myform.style.visibility = "visible";
     const mybook = retrieveTheBestBook(data);
     const isbn = document.getElementById("isbn_id");
     const title = document.getElementById("title_id");
@@ -111,6 +113,8 @@ function printHtmlBook(data) {
     publisher.value = mybook.volumeInfo.publisher;
     publisher.style.width = publisher.value.length + 1 + "ch";
   } else {
+    const myform = document.getElementById("form-book");
+    myform.style.visibility = "hidden";
     const message = document.getElementById("messageFromApi");
     message.innerHTML =
       "The Isbn has not been found , try with another one or enter manually the data";
@@ -120,6 +124,8 @@ function printHtmlBook(data) {
 
 window.addEventListener("load", () => {
   event.preventDefault();
+  const myform = document.getElementById("form-book");
+  myform.style.visibility = "hidden";
 
   document
     .getElementById("btn_search")

@@ -6,15 +6,12 @@
 
 .section1-isbn {
   display: flex;
-  flex-direction: row;
-  justify-content: space-between;
   align-items: center;
 }
 .section2-isbn {
   display: flex;
-  flex-direction: row;
-  position: relative;
   padding-top: 100px;
+  flex-direction: column;
 }
 .img-container-isbn {
   width: 200px;
@@ -25,16 +22,22 @@
   height: 100%;
 }
 #search_box {
-  width: 40vw;
+  width: 20vw;
   height: 7vh;
+  border-radius: 12px;
 }
 .nav-isbn {
-  width: 100vw;
-  position: fixed;
-  z-index: 1;
-  background-color: white;
+  display: flex;
 }
+
 #messageFromApi {
   width: 100vw;
   padding-bottom: 30px;
+}
+#btn_search {
+  border-style: none;
+  background-color: none;
+  cursor: pointer;
+
+  background: transparent;
 }

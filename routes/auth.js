@@ -19,16 +19,14 @@ router.get("/dashboard", (req, res, next) => {
       res.render("dashboard", {
         user: dbresult,
         books: dbresult.books,
-        books_bought: dbresult.books_bought
+        books_bought: dbresult.books_bought,
+        js: "addBook"
       });
     })
     .catch(next);
 });
 
 router.post("/addBooks", (req, res, next) => {
-  const data = {
-    js: ["dashboard"]
-  };
   const book = req.body;
   bookModel
     .create(book)
@@ -46,10 +44,7 @@ router.post("/addBooks", (req, res, next) => {
     .catch(next);
 });
 router.get("/addBooks", (req, res, next) => {
-  const data = {
-    js: ["addBook"]
-  };
-  res.render("addBook", data);
+  res.render("addBook", { js: "addBook" });
 });
 
 router.post("/editBook/:id", (req, res, next) => {
