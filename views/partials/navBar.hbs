@@ -17,6 +17,7 @@
             <a href="/auth/myprofile">My Profile</a>
             <a href="/auth/addBooks">Add a book</a>
             <a href="/auth/dashboard">My dashboard</a>
+            <a href="/auth/logout">Log out</a>
   </div>
     </div>
     {{/if}}
@@ -25,9 +26,9 @@
         <span class="btn-text">Sign in</span>
     </a>
     {{/unless}}
-    {{#if isLoggedIn}}
+    {{!-- {{#if isLoggedIn}}
     <a href="/auth/logout" id="nav_logout" class="button-ternary flexed-item nav-end-item">
         <span class="btn-text">Log out</span>
     </a>
-    {{/if}}
+    {{/if}} --}}
 </nav>

@@ -6,6 +6,7 @@
 @import "./signup-login.css";
 @import "./form.css";
 @import "./myProfile.css";
+@import "./bookitem.css";
 
 * {
   padding: 0;

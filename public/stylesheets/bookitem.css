@@ -1,0 +1,21 @@
+
+.allbooks-book-items {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border: solid 3px #1d4d4f;
+    border-radius: 8px;
+    padding: 1vh;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    transition: 0.3s;
+  }
+  
+  .allbooks-book-items > li {
+    font-size: 1.5vh;
+    margin: 0.7vh 0;
+  }
+  
+  .allbooks-book-items a i {
+    margin-top: 0.4vh;
+    font-size: 2vh;
+  }

@@ -24,18 +24,3 @@
   height: 20vh;
 }
 
-.allbooks-book-items {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.allbooks-book-items > li {
-  font-size: 1.5vh;
-  margin: 0.7vh 0;
-}
-
-.allbooks-book-items a i {
-  margin-top: 0.4vh;
-  font-size: 2vh;
-}
