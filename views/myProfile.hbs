@@ -3,14 +3,14 @@
 <h3 id="myprofile-title">My personal information</h3>
 <div class="dashboard-user-section">
                 <div id="avatar_section">
-                {{!-- <form action="/auth/myprofile" method="post" enctype="multipart/form-data">
+                    <div id="avatar_pic">
+                        <img src="{{user.avatar}}" alt="">
+                    </div>
+                    <form action="/auth/myprofile" method="post" enctype="multipart/form-data">
                     <label for="user-img">Upload your profile picture</label>
                     <input id="user-img" type="file" name="avatar">
                     <button type="submit">Submit</button>
-                </form> --}}
-                <div id="avatar_pic">
-                    <img src="{{user.avatar}}" alt="">
-                </div>
+                    </form>
                 </div>
                 <div class="myprofile" id="myprofile-info">
                     <h3>First name: {{user.firstname}}</h3>
