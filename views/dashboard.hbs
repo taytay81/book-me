@@ -21,12 +21,12 @@
                 <div class="dashboard-list-books">
 
                     {{>bookitem}}
-
+                    <div class="book-link">
                     <a href="/auth/deleteBook/{{this._id}}" class="fa fa-trash table-icon" data-id-book="{{this._id}}"
                         aria-hidden="true"></a>
                     <a href="/auth/editBook/{{this._id}}" class="fa fa-edit table-icon" data-id-book="{{this._id}}"
                         aria-hidden="true"></a>
-
+                    </div>
                 </div>
                 {{/each}}
 

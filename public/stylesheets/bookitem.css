@@ -19,3 +19,9 @@
     margin-top: 0.4vh;
     font-size: 2vh;
   }
+
+  .book-link {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
