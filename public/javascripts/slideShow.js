@@ -23,8 +23,10 @@ function showDivs(n) {
 }
 
 document.querySelector(".button-left").onclick = () => {
+  event.preventDefault();
   plusDivs(-1);
 };
 document.querySelector(".button-right").onclick = () => {
+  event.preventDefault();
   plusDivs(1);
 };
