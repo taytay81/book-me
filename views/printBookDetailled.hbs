@@ -4,20 +4,20 @@
   <ul class="list-books">
     <li class="books">
       <ul class="book-items">
-        <li><img src="{{book.image}}" alt="cover of book"></li>
-        <li>Title: {{book.title}}</li>
-        <li>Author: {{book.author}}</li>
-        <li>Genre: {{book.category}}</li>
-        <li>State: {{book.state}}</li>
-        <li>Publisher: {{book.publisher}}</li>
-        <li>Price: {{book.price}}</li>
-        <li>Description: {{book.description}}</li>
-        <li>Published Date: {{book.publishedDate}}</li>
-        <li>Pages Number: {{book.pageCount}}</li>
-        <li>Language: {{book.language}}</li>
-        <li>State: {{book.state}}</li>
-        <li>Points: {{book.points}}</li>
-        <li>Likes: {{book.likes}}</li>
+        <li><img src="{{finalBook.image}}" alt="cover of book"></li>
+        <li>Title: {{finalBook.title}}</li>
+        <li>Author: {{finalBook.author}}</li>
+        <li>Genre: {{finalBook.category}}</li>
+        <li>State: {{finalBook.state}}</li>
+        <li>Publisher: {{finalBook.publisher}}</li>
+        <li>Price: {{finalBook.price}}</li>
+        <li>Description: {{finalBook.description}}</li>
+        <li>Published Date: {{finalBook.publishedDate}}</li>
+        <li>Pages Number: {{finalBook.pageCount}}</li>
+        <li>Language: {{finalBook.language}}</li>
+        <li>State: {{finalBook.state}}</li>
+        <li>Points: {{finalBook.points}}</li>
+        <li>Likes: {{finalBook.likes}}</li>
         <a href="" class="like-link" custom-book-id={{this._id}}><i class="fas fa-heart"></i></a>
         <a href="/auth/buyBook/{{book._id}}"><i class="fas fa-plus-square"></i></a>
       </ul>

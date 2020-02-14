@@ -57,8 +57,13 @@ router.post("/editBook/:id", (req, res, next) => {
 router.get("/printBookDetailled/:id", (req, res, next) => {
   bookModel
     .findById(req.params.id)
-    .then(book => {
-      res.render("printBookDetailled", { book });
+    .then(book => {   
+      let newBook = {...book};
+      let finalBook = newBook._doc;
+      console.log(finalBook.publishedDate);
+      finalBook.publishedDate = String(finalBook.publishedDate).slice(0,15);
+      console.log(finalBook)
+      res.render("printBookDetailled", {finalBook});
     })
     .catch(next);
 });
