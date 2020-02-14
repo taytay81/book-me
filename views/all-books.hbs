@@ -1,6 +1,6 @@
 {{>navBar}}
-<div class="container-all-books">
-    <h1>All books</h1>
+<div class="big-container-all-books">
+    <h1>Catalog</h1>
     {{#unless books}}
     <p>No books found.</p>
     {{/unless}}
@@ -8,7 +8,7 @@
     <ul class="container-all-books">
         {{#unless isLoggedIn}}
         {{#each books}}
-         <div class="dashboard-list-books">
+         <div class="all-books-list">
            {{>bookitem}}
         </div>
         {{/each}}
@@ -16,7 +16,7 @@
 
         {{#if isLoggedIn}}
         {{#each books}}
-        <div class="dashboard-list-books">
+        <div class="all-books-list">
             {{>bookitemloggedin}}
         </div>
         {{/each}}
