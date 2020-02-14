@@ -21,4 +21,27 @@
   border-radius: 8px;
   box-shadow: 5px 5px 5px 5px #e5dfdf;
   margin-left: 5vw;
+  font-weight: bold;
+  color: #1d4d4f;
+  background-color: #6ba8a9;
+}
+li {
+  margin: 10px;
+}
+#info-example li {
+  margin: 10px;
+}
+#info-example h3 {
+  color: #1d4d4f;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+#info-example p {
+  color: #6ba8a9;
+}
+#info-section {
+  padding-top: 10px;
+}
+#info-example {
+  padding-top: 10px;
 }

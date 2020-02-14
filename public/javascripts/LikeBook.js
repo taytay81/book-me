@@ -1,11 +1,7 @@
-class APIHandler {
-  constructor(baseUrl) {
-    this.BASE_URL = baseUrl;
-    this.api = axios.create({
-      baseURL: baseUrl
-    });
-  }
-}
+const APIHandler = axios.create({
+  baseURL: "http://localhost:3000"
+});
+
 function printlikesNumber(e) {
   //e.target.className
   //target.setAttribute("style", "background-color:blue;");
@@ -18,22 +14,20 @@ window.addEventListener("load", () => {
     likesButton[i].addEventListener("mouseover", function(event) {
       event.preventDefault();
       var bookId = likesButton[i].attributes["custom-book-id"].textContent;
-      axios
-        .get("http://localhost:3000/getLikes/" + bookId)
+
+      APIHandler.get(`/getLikes/${bookId}`)
         .then(response => {
           likesButton[i].setAttribute("title", response.data.likes + "likes");
         })
         .catch(error => {
           console.log("Error is: ", error);
         });
-
     });
     likesButton[i].addEventListener("click", function(event) {
       event.preventDefault();
       console.log(likesButton[i]);
       var bookId = likesButton[i].attributes["custom-book-id"].textContent;
-      axios
-        .post("http://localhost:3000/getLikes/" + bookId)
+      APIHandler.post(`/getLikes/${bookId}`)
         .then(response => {
           console.log(response.data.likes);
           likesButton[i].setAttribute("title", response.data.likes + "likes");
