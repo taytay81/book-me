@@ -10,9 +10,18 @@ const uploadCloud = require("../config/cloudinary");
 router.get("/dashboard", (req, res, next) => {
   userModel
     .findById(req.session.currentUser._id)
-    .populate([
-      { path: "books", match: { isAvailable: true } },
-      { path: "books_bought", match: { isAvailable: false } }
+    .populate([{
+        path: "books",
+        match: {
+          isAvailable: true
+        }
+      },
+      {
+        path: "books_bought",
+        match: {
+          isAvailable: false
+        }
+      }
     ])
     .then(dbresult => {
       console.log(dbresult);
@@ -27,14 +36,19 @@ router.get("/dashboard", (req, res, next) => {
 
 router.post("/addBooks", (req, res, next) => {
   const book = req.body;
+
   bookModel
     .create(book)
     .then(createdBook => {
       userModel
         .findByIdAndUpdate(
-          req.session.currentUser._id,
-          { $push: { books: createdBook._id } },
-          { new: true }
+          req.session.currentUser._id, {
+            $push: {
+              books: createdBook._id
+            }
+          }, {
+            new: true
+          }
         )
         .then(updatedBook => {
           res.redirect("/auth/dashboard");
@@ -43,7 +57,13 @@ router.post("/addBooks", (req, res, next) => {
     .catch(next);
 });
 router.get("/addBooks", (req, res, next) => {
-  res.render("addBook", { js: "addBook" });
+  userModel.findById(req.session.currentUser._id).then(dbUser => {
+    res.render("addBook", {
+      js: "addBook",
+      user:dbUser
+    });
+  }).catch(err => console.log(err))
+
 });
 
 router.post("/editBook/:id", (req, res, next) => {
@@ -57,13 +77,17 @@ router.post("/editBook/:id", (req, res, next) => {
 router.get("/printBookDetailled/:id", (req, res, next) => {
   bookModel
     .findById(req.params.id)
-    .then(book => {   
-      let newBook = {...book};
+    .then(book => {
+      let newBook = {
+        ...book
+      };
       let finalBook = newBook._doc;
       console.log(finalBook.publishedDate);
-      finalBook.publishedDate = String(finalBook.publishedDate).slice(0,15);
+      finalBook.publishedDate = String(finalBook.publishedDate).slice(0, 15);
       console.log(finalBook)
-      res.render("printBookDetailled", {finalBook});
+      res.render("printBookDetailled", {
+        finalBook
+      });
     })
     .catch(next);
 });
@@ -73,7 +97,9 @@ router.get("/editBook/:id", (req, res, next) => {
     .findById(req.params.id)
     .then(book => {
       console.log(book);
-      res.render("editBook", { book });
+      res.render("editBook", {
+        book
+      });
     })
     .catch(next);
 });
@@ -84,9 +110,13 @@ router.get("/deleteBook/:id", (req, res, next) => {
     .then(dbRes => {
       userModel
         .findByIdAndUpdate(
-          req.session.currentUser._id,
-          { $pull: { books: req.params.id } },
-          { new: true }
+          req.session.currentUser._id, {
+            $pull: {
+              books: req.params.id
+            }
+          }, {
+            new: true
+          }
         )
         .then(userModified => {
           res.redirect("/auth/dashboard");
@@ -108,7 +138,9 @@ router.post("/signup", (req, res, next) => {
     return;
   } else {
     userModel
-      .findOne({ email: user.email })
+      .findOne({
+        email: user.email
+      })
       .then(dbRes => {
         if (dbRes) {
           return res.redirect("/auth/signup"); //
@@ -137,7 +169,9 @@ router.post("/signin", (req, res, next) => {
     return res.redirect("/auth/signin");
   }
   userModel
-    .findOne({ email: user.email })
+    .findOne({
+      email: user.email
+    })
     .then(dbRes => {
       if (!dbRes) {
         // no user found with this email
@@ -146,7 +180,11 @@ router.post("/signin", (req, res, next) => {
       // user has been found in DB !
       if (bcrypt.compareSync(user.password, dbRes.password)) {
         // encryption says : password match success
-        const { _doc: clone } = { ...dbRes }; // make a clone of db user
+        const {
+          _doc: clone
+        } = {
+          ...dbRes
+        }; // make a clone of db user
         delete clone.password; // remove password from clone
         req.session.currentUser = clone;
         return res.redirect("/books/all");
@@ -173,20 +211,28 @@ router.get("/buyBook/:id", (req, res, next) => {
   const currentUserId = req.session.currentUser;
 
   Promise.all([
-    bookModel.findById(currentBookId),
-    userModel.findById(currentUserId)
-  ])
+      bookModel.findById(currentBookId),
+      userModel.findById(currentUserId)
+    ])
     .then(dbRes => {
       if (dbRes[1].points >= dbRes[0].points) {
         const newPoints = dbRes[1].points - dbRes[0].points;
         console.log("user has enough points");
         Promise.all([
-          userModel.findByIdAndUpdate(currentUserId, { points: newPoints }),
-          bookModel.findByIdAndUpdate(currentBookId, { isAvailable: false }),
+          userModel.findByIdAndUpdate(currentUserId, {
+            points: newPoints
+          }),
+          bookModel.findByIdAndUpdate(currentBookId, {
+            isAvailable: false
+          }),
           userModel.findByIdAndUpdate(
-            currentUserId,
-            { $push: { books_bought: currentBookId } },
-            { new: true }
+            currentUserId, {
+              $push: {
+                books_bought: currentBookId
+              }
+            }, {
+              new: true
+            }
           )
         ]).then(added_Book => {
           // res.render("dashboard", {books_bought: dbRes[0]})
@@ -210,7 +256,12 @@ router.get("/buyBook/:id", (req, res, next) => {
 // GET MY PROFILE
 
 router.get("/myprofile", (req, res, next) => {
-  res.render("myProfile");
+  userModel.findById(req.session.currentUser._id).then(user => {
+    res.render("myProfile", {
+      user
+    });
+  }).catch(err => console.log(err))
+
 });
 
 // POST MY PROFILE
@@ -221,7 +272,11 @@ router.post("/myprofile", uploadCloud.single("avatar"), (req, res, next) => {
   if (req.file) avatar = req.file.secure_url;
   console.log(req.file);
   userModel
-    .findByIdAndUpdate(user._id, { avatar: avatar }, { new: true })
+    .findByIdAndUpdate(user._id, {
+      avatar: avatar
+    }, {
+      new: true
+    })
     .then(() => {
       res.redirect("/auth/myprofile");
     })
