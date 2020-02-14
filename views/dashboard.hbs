@@ -1,51 +1,40 @@
 {{>navBar}}
-{{!-- <form action="auth/user/edit">
-    <form action="">
-        <div class="dashboard-user-section">
-            <img src="{{user.avatar}}" alt="avatar" class="avatar">
-            <h2>Hello, My name is {{user.firstname}} {{user.name}}</h2>
-            <h5>leaving in {{user.city}}</h6>
-                <h6>{{user.email}}</h6>
-                <h6>{{user.points}} Points available</h6>
-        </div>
-        <hr>
-    </form>
-</form> --}}
 
-    <div class="dashboard-books-section">
-        <div class="dashboard-books-container" id="dashboard-book-to-sell-section">
-            <h3>My personal Books I want to Exchange</h3>
-            <div class="dashboard-container-all-books">
 
-                {{#each books}}
-                <div class="dashboard-list-books">
+<div class="dashboard-books-section">
+    <div class="dashboard-books-container" id="dashboard-book-to-sell-section">
+        <h3>My books to swap</h3>
+        <div class="dashboard-container-all-books">
 
-                    {{>bookitem}}
-                    <div class="book-link">
+            {{#each books}}
+            <div class="dashboard-list-books">
+
+                {{>bookitem}}
+                <div class="book-link">
                     <a href="/auth/deleteBook/{{this._id}}" class="fa fa-trash table-icon" data-id-book="{{this._id}}"
                         aria-hidden="true"></a>
                     <a href="/auth/editBook/{{this._id}}" class="fa fa-edit table-icon" data-id-book="{{this._id}}"
                         aria-hidden="true"></a>
-                    </div>
                 </div>
-                {{/each}}
-
             </div>
-        </div>
-        <hr>
-        <div class="dashboard-books-container" id="dasboard-favorite-books-section">
-            <h3>Books I purchased</h3>
-            <div class="dashboard-container-all-books">
-
-                {{#each books_bought}}
-                <div class="dashboard-list-books">
-
-                    {{>bookitem}}
-
-                </div>
-                {{/each}}
-
-            </div>
+            {{/each}}
 
         </div>
     </div>
+
+    <div class="dashboard-books-container" id="dasboard-favorite-books-section">
+        <h3>Books I purchased</h3>
+        <div class="dashboard-container-all-books">
+
+            {{#each books_bought}}
+            <div class="dashboard-list-books">
+
+                {{>bookitem}}
+
+            </div>
+            {{/each}}
+
+        </div>
+
+    </div>
+</div>

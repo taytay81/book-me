@@ -1,9 +1,8 @@
 {{>navBar}}
 <div id="container-book-detailled">
-  <h1>All details</h1>
-  <ul class="list-books">
+  <ul class="all-books-list">
     <li class="books">
-      <ul class="book-items">
+      <ul class="book-content">
         <li><img src="{{finalBook.image}}" alt="cover of book"></li>
         <li>Title: {{finalBook.title}}</li>
         <li>Author: {{finalBook.author}}</li>
@@ -18,8 +17,10 @@
         <li>State: {{finalBook.state}}</li>
         <li>Points: {{finalBook.points}}</li>
         <li>Likes: {{finalBook.likes}}</li>
-        <a href="" class="like-link" custom-book-id={{this._id}}><i class="fas fa-heart"></i></a>
+        <a href="" class="like-link" custom-book-id={{finalBook._id}}><i class="fas fa-heart"></i></a>
+        {{#if isLoggedIn}}
         <a href="/auth/buyBook/{{finalBook._id}}"><i class="fas fa-plus-square"></i></a>
+        {{/if}}
       </ul>
     </li>
   </ul>

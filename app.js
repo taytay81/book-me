@@ -88,7 +88,7 @@ function checkloginStatus(req, res, next) {
 app.use(checkloginStatus);
 
 // default value for title local
-app.locals.title = "Express - Generated with IronGenerator";
+app.locals.title = "Book Swap";
 
 const index = require("./routes/index");
 app.use("/", index);
