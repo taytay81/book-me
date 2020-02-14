@@ -8,8 +8,12 @@ const getBooks = async isbn => {
   if (isbn.length >= 10) {
     if (isbn.length == 13) {
       url = `https://www.googleapis.com/books/v1/volumes?q=ISBN_13:${isbn}&key=${API_KEY}`;
-    } else if (isbn.length == 10)
+    } else if (isbn.length == 10) {
       url = `https://www.googleapis.com/books/v1/volumes?q=ISBN_10:${isbn}&key=${API_KEY}`;
+    } else if (isbn.length > 13) {
+      url = `https://www.googleapis.com/books/v1/volumes?q=${isbn}&key=${API_KEY}`;
+    }
+
     const response = await fetch(url);
     const data = await response.json();
     printHtmlBook(data);
