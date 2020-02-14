@@ -1,58 +1,68 @@
-<h2>Update your book</h2>
-
 <form action="/auth/editBook/{{book._id}}" method="post">
 
-  <div>
-    <label for="">ISBN</label>
-    <input id="isbn_id" type="text" name="isbn" value="{{book.isbn}}">
-  </div>
-  <div>
-    <label for="">Title</label>
-    <input id="title_id" type="text" name="title" value="{{book.title}}">
-  </div>
-  <div id="authors_section">
-    <label for="">Authors</label>
-    <input id="author_id" type="text" name="author" value="{{book.author}}">
-  </div id="publishers_section">
-  <div>
-    <label for="">Publishers</label>
-    <input id="publisher_id" type="text" name="publisher" value="{{book.publisher}}">
-  </div>
-  <div>
+  <div class="detailToUpdate">
+    <h2>Update your book</h2>
+    <div class="all-books-list">
+      <div class="book-content">
+        <div>
+          <label for="">ISBN</label>
+          <input id="isbn_id" type="text" name="isbn" value="{{book.isbn}}">
+        </div>
+        <div>
+          <label for="">Title</label>
+          <input id="title_id" type="text" name="title" value="{{book.title}}">
+        </div>
+        <div id="authors_section">
+          <label for="">Authors</label>
+          <input id="author_id" type="text" name="author" value="{{book.author}}">
+        </div id="publishers_section">
+        <div>
+          <label for="">Publishers</label>
+          <input id="publisher_id" type="text" name="publisher" value="{{book.publisher}}">
+        </div>
+        <div>
 
-    <label for="">Price</label>
-    <input id="price_id" type="text" name="price" value="{{book.price}}">
-  </div>
-  <div>
-    <label for="">Description</label>
-    <textarea id="description_id" name="description" value="{{book.description}}"></textarea>
+          <label for="">Price</label>
+          <input id="price_id" type="text" name="price" value="{{book.price}}">
+        </div>
+        <div>
+          <label for="">Description</label>
+          <textarea id="description_id" name="description">{{book.description}}</textarea>
+
+        </div>
+        <div>
+          <label for="">language</label>
+          <input id="language_id" type="text" name="language" value="{{book.language}}">
+        </div>
+        <div>
+          <label for="">Category</label>
+          <input id="category_id" type="text" name="category" value="{{book.category}}">
+        </div>
+        <div><label for="">Published date</label>
+          <input id="published_date_id" type="text" name="publishedDate" value="{{book.publishedDate}}"></div>
+        <div><label for="">Pages:</label>
+          <input id="page_count_id" type="text" name="pageCount" value="{{book.pageCount}}"></div>
+        <div>
+          <input id="" type="text" name="state" value="{{book.state}}">
+          <label for="">Change the state: </label>
+          <select id="state_id">
+            <option value="">--Change the state--</option>
+            <option value="as new">As New</option>
+            <option value="very good">Very Good</option>
+            <option value="good">Good</option>
+            <option value="acceptable">Acceptable</option>
+          </select>
+        </div>
+
+        <div><label for="">Points to Earn </label>
+          <input id="points_id" type="text" name="points" value="{{book.points}}"></div>
+        <button>Update My Book</button>
+      </div>
+    </div>
 
   </div>
-  <div>
-    <label for="">language</label>
-    <input id="language_id" type="text" name="language" value="{{book.language}}">
-  </div>
-  <div>
-    <label for="">Category</label>
-    <input id="category_id" type="text" name="category" value="{{book.category}}">
-  </div>
-  <div><label for="">Published date</label>
-    <input id="published_date_id" type="text" name="publishedDate" value="{{book.publishedDate}}"></div>
-  <div><label for="">Pages:</label>
-    <input id="page_count_id" type="text" name="pageCount" value="{{book.pageCount}}"></div>
-  <div>
-    <input id="" type="text" name="state" value="{{book.state}}">
-    <label for="">Change the state: </label>
-    <select id="state_id">
-      <option value="">--Change the state--</option>
-      <option value="as new">As New</option>
-      <option value="very good">Very Good</option>
-      <option value="good">Good</option>
-      <option value="acceptable">Acceptable</option>
-    </select>
+
   </div>
 
-  <div><label for="">Points to Earn </label>
-    <input id="points_id" type="text" name="points" value="{{book.points}}"></div>
-  <button>Update My Book</button>
+
 </form>

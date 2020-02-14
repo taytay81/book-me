@@ -29,3 +29,13 @@ li {
 .fas {
   font-size: 20px;
 }
+.detailToUpdate {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+.detailToUpdate h2 {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: #357376;
+}
